@@ -1,0 +1,95 @@
+If you see any typos, please email \href{mailto:chili2025@u.northwestern.edu}{chili2025@u.northwestern.edu}.
+\section{Syllabus}
+\newsection
+
+\subsection*{Topics}
+\begin{enumerate}
+    \item Commutative algebra, linear algebra, tensor algebra.
+    \item Rings, ideals, modules, localization, Zarski topology/spec, tesor products.
+    \item Further topics include: Noether's normalization, going up and going down, completions of rings, dimension theory, Zarski's main thoerem, Nullstellensatz.
+    \item Representation theory, noncommutative algebra.
+\end{enumerate}
+\subsection*{References}
+\begin{enumerate}
+    \item Atiyah and Macdonald (lots of problems here but pretty terse)
+    \item Milne's notes on commutative algebra
+\end{enumerate}
+Both are available for free online.
+\subsection*{Grades}
+\begin{itemize}
+    \item Midterm: $20\%$
+    \item Final: $20\%$
+    \item Problemsets (fortnightly): $60\%$
+\end{itemize}
+Ask for hints on the problemsets only for the first 9 days. Office hours Saturday 1-2 on zoom. Further OH TBD.
+\section{}
+\subsection*{Notation}
+All rings are commutative, usually denoted $R, A, B$ and have multiplicative identity $1$.
+
+$I,J,M,P$ denote ideals. $M$ ideals are maximal and $P$ ideals are prime.
+
+Modules are denoted by $M, N$.
+
+\definition{Prime Ideal}{
+    An ideal $P$ is prime if \[
+    xy\in P \implies x\in P \textrm{ or } y\in P.
+    \]
+}
+\definition{Maximal Ideal}{
+    An ideal $M$ is maximal if $M\subset I\implies I=R$.
+}
+\proposition{Maximal ideals are prime}
+\begin{proof}
+    We can show something stronger. We have equivalent definitions that\begin{itemize}
+        \item An ideal $I$ is prime iff $R/I$ is an integral domain.
+        \item An ideal $I$ is maximal iff $R/I$ is a field. 
+    \end{itemize}
+    A field is an integral domain so we are done.
+\end{proof}
+\definition{Special elements of ring}{
+    Let $x\in R$. Then $x$ is \begin{enumerate}
+        \item A unit, if there is $y\in R$ such that $xy=1$.
+        \item A zero divisor, if there is $y\in R\backslash{0}$ such that $xy=0$.
+        \item Nilpotent, if there is some $n$ such that $x^n=0$.
+    \end{enumerate}
+}
+\begin{remark}
+    The set of units form a multiplcative set. The complement of units need not form an ideal, for instance $\mathbb{Z}/6$. Similarly, the set of zero divisors need not form an ideal.
+\end{remark}
+\proposition{
+    The set of nilpotent elements form an ideal. We call this the nilradical of $R$ and denote it $n(R)$.
+}
+\begin{proof}
+    $0$ is nilpotent, $n(R)$ is nonempty.
+    Let $x^n=0, y^m=0$. Then $(x+y)^{n+m}=0=(rx)^n$ for any $r\in R$. So the nilradical is closed under addition and multiplcation.
+\end{proof}
+\proposition{
+    We have \[
+    n(R/n(R))=\{0\}.
+    \]
+}
+\begin{proof}
+    Let $[a]$ be nilpotent in $R/n(R)$. 
+    Then there exists $k$ such that $a^k\in n(R)$. But then this means $a$ is nilpotent in $R$ too. So $[a]=0$.
+\end{proof}
+\definition{Reduced ring}{
+    $R$ is reduced if $n(R)$ is trivial.
+}
+
+Similarly we can define nilradicals based on other ideals. \definition{Nilradical}{
+    Let $I\subseteq R$ be an ideal. Then the nilradical of $I$ is \[
+    n(I)\defeq \{r \in R : \exists n \textrm{ s.t. } r^n\in I\}.
+    \]
+} 
+\proposition{
+    \begin{itemize}
+        \item $n(I)$ is an ideal.
+        \item $n(R/n(I))$ is trivial.
+    \end{itemize}
+}
+\begin{proof}
+    The same as above.
+\end{proof}
+
+
+

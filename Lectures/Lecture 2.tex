@@ -1,0 +1,76 @@
+\section{}
+\begin{atheorem}{}{}
+    \[n(R)=\bigcap_{\textrm{prime ideals }P\subseteq R}P.\]
+\end{atheorem}
+\begin{proof}
+    The inclusion $\subseteq$ is easy. Let $r\in R$ be nilpotentent and $P$ be a prime ideal. Then $r^n=0\in P$. Backwards induction on $n$ gives that $r\in P$.
+
+    We now prove the opposite inclusion. 
+    Let $r\in R$ be not nilpotent. Let $S$ be the set of all ideals of $R$ that do not contain any power of $r$. We give this a partial order by inclusion. This is non-empty as the trivial ideal satisfies this condition. Every ascending chain is bounded by the union of the ideals, and the union of the ideals in an ascending chain is an ideal that does not contain any power of $r$. So we apply Zorn's lemma to obtain a maximal element of the set $P$. We want to show that $P$ is prime. 
+
+    Suppose not, then there is $xy\in P$ but $x\notin P$ and $y\notin P$.
+    But now we have ideals
+    $(P,x)$ and $(P,y)$ that both contain some power of $r$, say $r^n$ and $r^m$ respectively. We have \[
+    r^n=p_1+a_1x, r^m=p_2+a_2y.
+    \]
+    But now $r^{n+m}=(p_1+a_1x)(p_2+a_2y)\in P$ giving a contradiction.
+\end{proof}
+\begin{adefinition}{}{}
+    $S\subseteq R$ is multiplcatively closed $s_1,s_2\in S\implies s_1s_2\in S$.
+\end{adefinition}
+\begin{atheorem}{}{}
+    Let $S$ be multiplcatively closed. Then there is a prime ideal that is disjoint from $S$.
+\end{atheorem}
+\begin{proof}
+    Same as above. But now set the set of ideals to be those that are disjoint from $S$, and find the maximal element. The previous example for the nilradical proof is for the multiplcatively closed set $\{r, r^2, r^3...\}$.
+\end{proof}
+\begin{remark}
+    This ideal need not be maximal. For instance, take the ring of integers and $S$ be $\mathbb{Z}-\{0\}$. The only prime ideal disjoint from this is the zero ideal. Another example would be $\mathbb{C}[x,y]$. By Hilbert's Nullstellensatz the only maximal ideals are in the form $(x-a, y-b)$. The set of polynomials\[
+    \{f\in \mathbb{C}[x,y]-\{0\}: f(x,y)=g_1(x)g_2(y),g_1,g_2\in \mathbb{C}[t]\}
+    \]intersects every maximal ideal. 
+    A non trivial prime ideal that does not intersect $S$ would be $(x-y^2)$ which does not split into products of $x$ and $y$.
+\end{remark}
+
+We now consider the intersection of all maximal ideals. 
+\definition{Jacobson Radical}{
+    The Jacobson radical of $R$ is denoted $J(R)$ and is the intersection of all maximal ideals in $R$.
+}
+\theorem[]{}{
+    $J(R)$ consists of exactly the elements $x\in R$ such that $1-xy$ is a unit for all $y\in R$.
+}
+\begin{proof}
+For the $\subseteq$ direction, let $1-xy$ be not a unit. Then there is a maximal ideal containing $1-xy$. This ideal cannot contain $x$, as this would be the ideal would also contain $(1-xy) + x(y) = 1$. Therefore $x$ is not in the Jacobson radical.
+
+For the other direction, suppose that $x$ is not contained in a maximal ideal $m$. Then we would have $(m,x)=R$, so that $m+xy=1$ for some $y$, then $1-xy=m$ is not a unit.
+\end{proof}
+
+\definition{Local Ring}{
+    $R$ is called a local ring if it contains exactly one maximal ideal.
+}
+\example[]{\begin{itemize}
+    \item A field is a local ring.
+    \item Let $P$ be a prime ideal that does not contain $1$. Take its complement $S$, which is a multiplcatively closed set. The localization $S^{-1}R$ is a local ring. This is because set of non-units in this ring are in the form $\frac{p}{s}$ for $p\in P, s\in S$, the others $\frac{s_1}{s_2}$ are invertible.
+\end{itemize}
+}
+\lemma[]{
+$R$ is a local ring iff there is an ideal $M$ such that $R\backslash M$ is the set of all units in $R$.
+}
+\begin{proof}
+    The backwards direction is obvious. This $M$ is maximal, and contains all other ideals except for $R$.
+
+    For the forwards direct, suppose not, then consider a maximal ideal. Take an element from its complement that is not a unit and consider a maximal ideal containing it. 
+\end{proof}
+\lemma[]{
+    Let $M\subset R$ be maximal. Then if $1+m$ is a unit for every $m\in M$, $R$ is local.
+}
+
+\begin{proof}
+    We have $R/M$ is a field. Therefore, for every $r\in M^c$. We have $y$ such that $ry=1+m$ for some $m\in M$. Since $ry$ is a unit, $r$ is a unit.
+\end{proof}
+
+\example[]{
+    The formal power series ring $\mathbb{C}[[x_1,...,x_n]]$ is local. 
+    Take the ideal $(x_1,...,x_n)$. Then for every power series $f$ in $x_1,...,x_n$ with $0$ constant term, we show that $1+f$ is a unit.
+    This is apparent as we have the formal power series 
+    $(1+f)^{-1}= (1-f+f^2-f^3+...)$.
+}
