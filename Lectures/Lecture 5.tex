@@ -1,0 +1,161 @@
+\section{}
+We now prove the Universal property of localization.
+\begin{proof}
+    We need to define $S^{-1}f(a/s)$.
+    Notice we must have $S^{-1}f(a/s)S^{-1}f(s) = S^{-1}f(a)$. So we must have \[
+        S^{-1}f(a/s)= f(a)f(s)^{-1}.
+    \]
+    This is the uniqueness.
+    We now need this to be well defined.
+
+    Suppose $\frac{a}{s}=\frac{a'}{s'}$. Then there is $\tilde{s}\in S$ such that $(as'-sa')\tilde{s}=0$.
+    Then we have \[
+    (f(a)f(s')-f(s)f(a'))f(\tilde{s}) =0
+    \]
+    $f(\tilde{s})$ is a unit, so we have \[
+        f(a)f(s')-f(s)f(a')=0\implies f(a)f(s)^{-1}=f(a')f(s')^{-1}.
+    \]
+
+    Now we can confirm that this indeed satisfy ring homomorphism properties (this is just tedious).
+\end{proof}
+
+\proposition[]{
+    It is useful to think of quotients $A/I$ as surjective maps $A\to B$ with kernel $I$.
+
+    In the same way, it is useful to think of localization $S^{-1}R$ as 
+    \[
+    f:A\to B,
+    \]
+    such that \begin{itemize}
+        \item $f(s)$ is a unit for $s\in S$
+        \item Every element in $B$ is in the form $f(a)/f(s)$.
+        \item $f(a)=0\implies \exists s\in S $ such that $as=0$
+    \end{itemize}
+}
+\begin{proof}
+    By the universal property of quotients and the first property, we have $S^{-1}A\to B$. The second property guarantes this map is surjective. 
+    We now need this map to be injective. 
+    \[
+    S^{-1}f(\frac{a}{s})=0 \implies f(a)f(s)^{-1}=0 \implies f(a)=0
+    \]
+    By the third property, we have $s'\in S$ such that $as'=0$. But this would mean $\frac{a}{s}=\frac{as'}{ss'}=0$ to begin with.
+\end{proof}
+
+Let $M$ be an $A$-module. We define $S^{-1}M$ \[
+S^{-1}M\defeq \{\frac{m}{s}: m\in M, s\in S\}/\sim,
+\]
+with the equivalence\[
+\frac{m}{s}\sim\frac{m'}{s'}
+\]
+if $\exists \tilde{s}\in S s.t. \tilde{s}(s'm-sm')=0$.
+
+\begin{notation}
+    If $S=A/p$ for some prime ideal $p$, we write $A_p\defeq S^{-1}A, M_p\defeq S^{-1}M$. If $S=\{1,f,f^2...\}$, we denote $A_f,M_f$ respectively.
+\end{notation}
+\proposition[]{
+    $S^{-1}$ is an exact functor in $\rm{Mod}_R$.
+}\begin{proof}
+    Let $M'\stackon{$f$}{\to} M\stackon{$g$}{\to} M''$ exact. Consider exactness at $S^{-1}M$.
+
+    Let $m\in M, s\in S$ such that $g(m/s)=0$. Then $g(m)/s=0$. Then $\exists s'\in S$ such that $s'g(m)=0$. So that $g(s'm)=0$. Then we have $s'm\in f(M')$. So take this and divide by $s's$ to get $m/s$. 
+
+
+
+\end{proof}
+\definition[]{}{
+    Let $\phi:A\to B$. Then we can consider $B$ an $A$-module by \[
+    a\cdot b = \phi(a)b.
+    \]
+}
+Let $A\to B$. If $M$ is an $A$-module, we can look at \[
+B \otimes_{A} M,
+\]
+viewed as the tensor product of $A$ modules. This is also a $B$-module. This is because we can define \[
+b \cdot (\sum_i b_i\otimes m_i) = \sum_i bb_i\otimes m_i.
+\]
+
+Therefore, we can build another $S^{-1}A$ module by \[
+S^{-1}A \otimes_A M.
+\]
+\proposition[]{
+    There is an isomorphism \[
+    S^{-1}A \otimes_A M \to S^{-1}M.
+    \]
+
+}
+\begin{proof}
+    Consider the map $S^{-1}A\times M\to S^{-1}M$ by \[
+    (\frac{a}{s},m)\mapsto \frac{am}{s}.
+    \]
+    This induces a map \[
+        S^{-1}A\times M\to S^{-1}A\otimes_A M \to S^{-1}M
+    \]
+    where we have \[
+    f(\sum_i a_i/s_i \otimes m_i)=\sum_{i}\frac{a_im_i}{s_i},
+    \]
+    which is obviously surjective.
+    For injectivity, we would expect that every element in $S^{-1}A\otimes_A M$ to be a pure tensor element.
+
+    Now we have (let $s=s_1...s_n$)\[
+    \sum_i \frac{a_i}{s_i}\otimes m_i = \sum_{i}\frac{1}{s_i}\otimes{a_im_i} = \sum_{i}\frac{1}{s}\otimes {a_i(s/s_i) m_i}
+    \]
+    is a pure tensor. 
+    So every element in $S^{-1}A\otimes_A M$ can be written as a primitive tensor. 
+    This makes life easier. Let $r=\frac{1}{s}\otimes m$ such that $f(r)=0$. 
+    Then we have $m/s=0$. So there is $s'\in S$ such that $s'm=0$. Then \[
+    r=\frac{s'}{ss'}\otimes m =0.
+    \]
+\end{proof}
+
+\definition{Local properties}{
+    Let $P$ be a property of some an $A$-module. We say that $P$ is a \textbf{Local property} if \[
+    M \textrm{ has }P \iff M_p \textrm{ has } P 
+    \]
+    for all prime ideals $p\subset A$.
+}
+\proposition[]{
+    The following are equivalent:
+    \begin{enumerate}
+        \item $M=0$
+        \item $M_p =0 \forall p\subset A$ prime
+        \item $M_m=0 \forall m\subset A$ maximal.
+    \end{enumerate}
+
+}
+\begin{proof}
+    Trivially, 1 implies 2 implies 3.
+    We now show $3\implies 1$.
+    Suppose $M\neq 0$. Then let $x\in M\backslash{0}$. Consider the annihilator of $x$. Consider a maximal ideal $m$ containing Ann$(x)$. Then $s\cdot x\neq 0$ for all $s\notin m$. But then $\frac{x}{1}$ is not $0$ in $M_m$.
+\end{proof}
+\proposition[]{
+    Let $\phi:M\to N$. TFAE:\begin{enumerate}
+        \item $\phi$ injective
+        \item $\phi_p:M_p\to N_p$ injective for all $p\subset A$
+        \item $\phi_m:M_m\to N_m$ injective for all $m\subset A$
+    \end{enumerate}
+}\begin{proof}
+    Similar as above.
+\end{proof}
+\definition{Flatness}{
+    Let $M$ be an $A$-module. Then $M$ is flat if $\otimes M$ is an exact functor.
+}
+\theorem[]{}{
+    TFAE \begin{enumerate}
+        \item $M$ is flat.
+        \item $M_p$ is a flat $A_p$ module for all $p$ prime.
+        \item $M_m$ is a flat $A_m$ module for all $m$ maximal.
+    \end{enumerate}
+}
+\begin{proof}
+    ($3\implies 1$)
+    Tensor products are right exact, so we need left exactness. Suppose $M$ is not flat.
+    Then there is $N\to N''$ injective but $M\otimes N\to M\otimes N''$ not injective.
+
+    Then by the previous proposition we have a maximal ideal such that \[
+    M_m\otimes N_m \to M_m\times N''_m
+    \] is not injective.
+
+\end{proof}
+\begin{remark}
+    We have $(S^{-1}A\otimes_A M )\otimes _{S^{-1}A} (S^{-1}A\otimes_A N)\simeq S^{-1}A\otimes (M \otimes_A N)$.
+\end{remark}

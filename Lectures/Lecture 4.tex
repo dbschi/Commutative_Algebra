@@ -67,7 +67,7 @@ Let $R$ be a local ring with maximal ideal $m$, $M$ a finitely generated $R-$mod
     Evaluate these at the $a_i$'s. Since $g$ has no constant term, $g(a_i)\in I$ and we have expressed $f$ in the left hand side.
 \end{proof}
 \subsection*{Localization}
-\begin{adefinition}{Multiplicatively Closed Set}{}
+\begin{adefinition}[breakable=false]{Multiplicatively Closed Set}{}
     $S\subseteq R\backslash\{0\}$ is multiplicatively closed if it contains $1$ and $s,t\in S \implies st\in S$.
 
     We define localization \[
@@ -89,6 +89,7 @@ Let $R$ be a local ring with maximal ideal $m$, $M$ a finitely generated $R-$mod
     There is a canonical ring homomorphism $R\to S^{-1}R$. This sends $r\to \frac{r}{1}$.
 }
 \theorem[]{Universal property of localization}{
+    Let $S\subset R$ be multiplcatively closed. 
     Let $g:R\to R'$ be a ring homomorphism such that $g(s)$ is a unit for every $s\in S$. Then there is a unique map $g_s S^{-1}R\to R'$ such that the composite $R\to S^{-1}R\to R'$ is equal to $g$.
 
     In other words, $S^{-1}R$ is the smallest ring such that every element in $S$ is a unit.

@@ -126,7 +126,7 @@
   \let\@ifnextchar\new@ifnextchar
   \array{#1}}
 \makeatother
-
+\newcommand{\stackon}[2]{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny {#1}}}}{#2}}
 \newcounter{thmcounter} % continuity of theorem
 
 \newcommand{\definition}[2]{\addtocounter{thmcounter}{1}
@@ -305,7 +305,7 @@
 \maketitle
 \tableofcontents
 \newcounter{lecture}
-\forloop{lecture}{1}{\value{lecture}<5}
+\forloop{lecture}{1}{\value{lecture}<6}
 {
 	\input{Lectures/Lecture \arabic{lecture}.tex}
 }
