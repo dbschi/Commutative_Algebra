@@ -1,0 +1,93 @@
+\section{}
+
+For the following statements, let $B$ be an integral algebra over $A$. 
+\proposition[]{
+    If $A$ and $B$ are integral domains then $A$ is a field iff $B$ is a field.
+}
+\begin{proof}
+    $\implies: $ Let $A$ be a field. Let $0\neq b\in B$. Then consider the monic polynomial \[
+    b^n + ... +a_0 =0.
+    \]
+    WLOG we can assume $a_0$ is non zero, as integral domain. Then subtract $a_0$ on each side and divide by $-a_0$. We can factor $b$ out to find an inverse.
+    
+    $\impliedby:$ 
+    \textbf{We first prove it assuming that $A$ is integrally closed.}
+    Let $B$ be a field. Then $\rm{Frac} A\subseteq B$. So the field of fractions is integral over $A$. But $A$ is integrally closed, i.e. the field of fractions of $A$ lies in $A$. 
+
+
+    Now we drop the integrally closed condition. Let $a\in A$. Consider $a^{-1}\in B$. There is a monic polynomial \[
+    a^{-n}+ ... + a_0 =0.
+    \]
+    Multiplying both sides by $a^{n-1}$ gives \[
+    a_0 a^{n-1} + ... + a^{-1}=0.
+    \]
+    Now we have expressed $a^{-1}$ in $A$.
+\end{proof}
+\proposition[]{
+    Let $S\subset A$ be a multiplicatively closed set. Then $S^{-1}B$ is integral over $S^{-1}A$.
+}
+\begin{proof}
+    Let $\frac{b}{s}\in S^{-1}B$.
+    Then we have \[
+    b^n + ... +a_0=0.
+    \]
+    Dividing both sides by $s^n$ will produce a polynomial with coefficients in $S^{-1}A$.
+\end{proof}
+\proposition[]{
+    Let $q\subset B$ a prime ideal. Then $q$ is maximal iff $p\defeq q\cap A$ is maximal.
+}
+\begin{proof}
+    Consider $B/q$ is integral over $A/p$ (because quotients). Since $q$ is prime, these two are both integral domains. By the previous proposition, one is a field if and only if the other is field. Translating back to ideals, one is maximal if and only if the other is maximal.
+\end{proof}
+
+\proposition[]{
+    Let $q_1\subseteq q_2\subset B$ both prime ideals, and \[
+    q_1\cap A =p= q_2\cap A.
+    \]
+    Then $q_1=q_2$.
+}
+\begin{proof}
+    If $p$ is maximal then the statement follows directly from the previous proposition. Else consider the multiplcatively closed set $S=A \backslash p$. Then $S^{-1}B$ integral over $S^{-1} A$. Now $S^{-1}p$ is maximal. So $S^{-1}q_1=S^{-1}q_2$. Since we have bijection between prime ideals that avoid $S$ and prime ideals in $S^{-1}B$, they have to be the same before localization.
+\end{proof}
+
+\example[]{
+    Let $\mathbb{K}/\mathbb{Q}$ be a finite extension of fields.
+
+    $\mathbb{Z}\subset \mathbb{Q}$. We would like to find something in $\mathbb{K}$ that looks like an extension of $\mathbb{Z}$.
+
+}
+
+\definition{Integral closure}{
+    The closure $O_K\subseteq K$ is the ring of elements in $K$ that satisfies a monic $\mathbb{Z}$-polynomial.
+}
+\begin{remark}
+    This is a ring because the sum and products of integral elements are integral.
+\end{remark}
+\proposition[]{
+    Every non-zero prime ideal in $O_K$ is maximal. 
+}\begin{proof}
+    Let $p$ be prime. If $p\cap \mathbb{Z}=(0)=(0)\cap \mathbb{Z}$, then we have $p=(0)$.
+    Else consider the maximal ideal $p\cap\mathbb[Z]=(p_0)$. Take a maximal ideal $q$ containing $p$, then $q\cap \mathbb{Z}=p\cap \mathbb{Z}$. So $p=q$ is maximal.
+\end{proof}
+\proposition[]{
+The field of fractions of $O_K$ is $K$. 
+}
+\begin{proof}
+    We will show that $\alpha\in K$ there exists $0\neq n\in \mathbb{Z}$ such that $n\alpha \in O_k$. Since $K/\mathbb{Q}$ finite, write \[
+    \alpha ^n + ... + k_0 =0.
+    \]
+    Each $k_i= a_i/b_i$. So multiply each side by $b=\prod_i b_i^n$. Then $b\alpha$ satisfies a monic polynomial with coefficients in $\mathbb{Z}$.  
+\end{proof}
+\proposition[]{
+    $O_K$ is integrally closed. 
+}
+\begin{proof}
+    Let $\alpha\in K$ integral over $O_K$. Then $O_K(\alpha)$ integral over $O_K$ integral over $\mathbb{Z}$, so that $\alpha$ integral over $\mathbb{Z}$.
+\end{proof}
+
+\subsection{Calculation of integral closures}
+\example[]{
+    We find the integral closure of $\mathbb{Q}[\sqrt{2}]$. We know these are the set of elements that satisfy minimal polynomials in $\mathbb{Z}[x]$. Since this is a field of degree $2$, we just compute \[
+    x^2 - (a+b\sqrt{2}+a-b\sqrt{2})x+(a+b\sqrt{2})(a-b\sqrt{2})=0
+    \] such that these coefficients are in $\mathbb{Z}$. This turns out to be $a,b\in \mathbb{Z}$, so the integral closure is just $\mathbb{Z}[\sqrt{2}]$. This is not the case with $\mathbb{Q}[\sqrt{5}]$, as we have $a=1/2,b=1/2$. The integral closure of $\mathbb{Q}[\sqrt{5}]$ is $\mathbb{Z}[(1+\sqrt{5})/2]$
+}
