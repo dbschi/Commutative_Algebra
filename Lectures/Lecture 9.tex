@@ -58,19 +58,19 @@ For the following statements, let $B$ be an integral algebra over $A$.
 }
 
 \definition{Integral closure}{
-    The closure $O_K\subseteq K$ is the ring of elements in $K$ that satisfies a monic $\mathbb{Z}$-polynomial.
+    The closure $\mathcal{O}_K\subseteq K$ is the ring of elements in $K$ that satisfies a monic $\mathbb{Z}$-polynomial.
 }
 \begin{remark}
     This is a ring because the sum and products of integral elements are integral.
 \end{remark}
 \proposition[]{
-    Every non-zero prime ideal in $O_K$ is maximal. 
+    Every non-zero prime ideal in $\mathcal{O}_K$ is maximal. 
 }\begin{proof}
     Let $p$ be prime. If $p\cap \mathbb{Z}=(0)=(0)\cap \mathbb{Z}$, then we have $p=(0)$.
     Else consider the maximal ideal $p\cap\mathbb[Z]=(p_0)$. Take a maximal ideal $q$ containing $p$, then $q\cap \mathbb{Z}=p\cap \mathbb{Z}$. So $p=q$ is maximal.
 \end{proof}
 \proposition[]{
-The field of fractions of $O_K$ is $K$. 
+The field of fractions of $\mathcal{O}_K$ is $K$. 
 }
 \begin{proof}
     We will show that $\alpha\in K$ there exists $0\neq n\in \mathbb{Z}$ such that $n\alpha \in O_k$. Since $K/\mathbb{Q}$ finite, write \[
@@ -79,10 +79,10 @@ The field of fractions of $O_K$ is $K$.
     Each $k_i= a_i/b_i$. So multiply each side by $b=\prod_i b_i^n$. Then $b\alpha$ satisfies a monic polynomial with coefficients in $\mathbb{Z}$.  
 \end{proof}
 \proposition[]{
-    $O_K$ is integrally closed. 
+    $\mathcal{O}_K$ is integrally closed. 
 }
 \begin{proof}
-    Let $\alpha\in K$ integral over $O_K$. Then $O_K(\alpha)$ integral over $O_K$ integral over $\mathbb{Z}$, so that $\alpha$ integral over $\mathbb{Z}$.
+    Let $\alpha\in K$ integral over $\mathcal{O}_K$. Then $\mathcal{O}_K(\alpha)$ integral over $\mathcal{O}_K$ integral over $\mathbb{Z}$, so that $\alpha$ integral over $\mathbb{Z}$.
 \end{proof}
 
 \subsection{Calculation of integral closures}
