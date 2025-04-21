@@ -1,0 +1,102 @@
+\section{}
+
+\newcommand{\tr}{\rm{Tr}}
+\theorem[]{}{
+    $\mathcal{O}_K$ is Noetherian. 
+}\begin{proof}
+    We will show that \textbf{every ideal of $\mathcal{O}_k$ is finitely generated over $\mathbb{Z}$}, thus finitely generated over $\mathcal{O}_k$.
+
+    Suppose $K/\mathbb{Q}$ is an extension of degree $n$. Let $\beta_1,\beta_n\in \mathcal{O}_K$ that forms a $\mathbb{Q}$-basis for $K$. This is possible because $\mathbb{Z}^{+ \ -1} \mathcal{O}_K=K$.Then $\exists \beta_1^*,...,\beta_n^*\in K$ such that $\tr(\beta_i \beta_j^*)=\delta_{ij}$.
+
+    We want to show \[
+    \oplus_i \mathbb{Z}B_i \subseteq \mathcal{O}_K \subseteq \oplus_i \mathbb{Z}B_i^*.
+    \]
+    First notice (exercise) \[
+    \oplus_i \mathbb{Z}\beta_i^* = \{\beta\in K : B(\beta,\beta_i)\i \mathbb{Z} \forall i\}.
+    \]
+    So we want to show that \[
+    \tr(\alpha\beta_i)\in \mathbb{Z} \forall \alpha \in\mathcal{O}_K.
+    \]
+    This is true because trace is in the fixed field $\mathbb{Q}$ and the trace is integral if $\alpha \in \mathcal{O}_K$. So that the trace is an integer.
+\end{proof}
+\definition{Trace}{
+    Let $\alpha\in K$, then the trace\[
+    \tr_{K/\mathbb{Q}}(\alpha) = \alpha_1+...+\alpha_n,
+    \]
+    the sume of all conjugates of $\alpha$. I.e. take the galois extension of $\mathbb{Q}$ containing $K$. Let $\sigma_i:K\to N$ where $\sigma_1$ is inclusion. Then the trace is the sum of $\sigma_i(\alpha)$.
+}
+\proposition[]{
+    \begin{enumerate}
+        \item $\tr(\alpha+\beta)=\tr\alpha + \tr \beta$
+        \item $\tr(a\alpha/b)=a/b \tr \alpha$
+    \end{enumerate}
+
+    Let $B_{K/\mathbb{Q}}:K\times K\to\mathbb{Q}$ that sends $(\alpha,\beta)\mapsto \tr(\alpha\beta)$. This is bilinear and nondegenerate.
+}
+\begin{remark}
+    In general, $\tr_{L/F} $ not $\equiv 0 \iff L/F $ is separable.
+\end{remark}
+
+
+\definition{Dedekind domain}{
+    An integral domain $R$ is a \textbf{Dedekind domain} if \begin{enumerate}
+        \item $R$ is Noetherian
+        \item All non-zero prime ideals are maximal
+        \item $R$ is normal (integrally closed).
+    \end{enumerate}
+}
+\corollary[]{
+    $\mathcal{O}_K$ is a Dedekind domain.
+}
+\corollary[]{
+    $A$ Dedekind domain, $F$ field of fractions, and $K/F$ separable extension, then the integral closure of $A$ in $K$ is a Dedekind domain.
+}
+
+\theorem[]{}{
+    Let $B/A$ integral. Let $p\subseteq A$ prime ideal. Then there is a prime ideal in $B$ that contracts to $p$ in $A$. i.e. \[
+    q\cap A = p .
+    \] 
+
+}
+\begin{proof}
+    Localize $p$. $A\to A_p$. Then $p A_p$ is (uniquely) maximal. Moreover, since $A_p$ is not a field, $B_p$ is not a field and has a nonzero maximal ideal $m$. Then $m\cap A_p$ is maximal so it is $p A_p$. Now we have $m\cap A = p $. Then $m\cap B$ contracts to $p$.
+\end{proof}
+\theorem[]{Going Up}{
+    Let $B/A$ integral. Let $q\subseteq B$ prime, $p\subseteq p' \subseteq A$ prime. Also suppose that $q\cap A = p$. Then there exists $q\subseteq q'\subseteq B$ prime such that it contracts to $p'$. 
+}\begin{proof}
+    Consider $A/p$ and $B/q$. By the previous theorem, we have a prime ideal of $\bar{q}'\subseteq B/q$ that contracts to $p'/p\subseteq A/p$. Now take the preimage of $\bar{q}'$ in $B$. We can check that it contracts to $p'$. (exercise)
+\end{proof}
+\begin{acorollary}{Going Up}{}
+    Let $B/A$ integral.
+    Let $p_1\subseteq p_2\subseteq...\subseteq p_n\subseteq A$ be a chain of prime ideals, and $q_1\subseteq B$ prime that contracts to $p_1$. Then we can extending the chain in $q$ to the full length $n$ i.e. $q_1\subseteq q_2\subseteq ...\subseteq q_n$, such that each $q_i$ contracts to $p_i$.
+\end{acorollary}
+
+We would like to work towards going down theorem. To extend the chain the other way, we need a few more statements and some additional assumptions.
+
+\definition{}{
+    Let $a\subseteq A$, $B/A$ integral. Then $b\in B$ integral over $a$ if $B$ satisfies a monic polynomial with coefficients (except the first monic one...) lying in the ideal $a$.
+
+    The set of elements that are integral over $a$ is called the integral closure of $a$ in $B$.
+}
+
+\proposition[]{
+    Consider $B/A$. Then $b\in B$ is integral over $a\subseteq A$ iff there is a faithful $A[b]$ section (module) $M\subseteq B$ that is finitely generated as an $A$ module and $bM\subseteq aM$.
+}
+\begin{proof}
+    Exercise.
+\end{proof}
+
+
+\theorem[]{}{
+    The integral closure of $a$ in $B$ is $r(aB)$.
+}\begin{proof}
+    $\supseteq$: Let $b\in r(aB)$. Then write \[
+     b^n= \sum_{i}^m a_i x_i
+    \]
+    for some $x_i\in B$, $a_i\in a$. 
+    Then let $M=A[x_i]$. We thus have $b^NM \subseteq aM$. So that $b^N$ integral over $a$. So $b$ integral over $a$.
+
+    $\subseteq$: For the other way, let $b$ be integral over $a$. Write \[
+    b^n = \sum_{i<n} a_i b^i \in aB
+    \] so $b\in r(aB)$.
+\end{proof}
