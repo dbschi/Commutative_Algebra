@@ -1,0 +1,82 @@
+\section{Nullstellensatz}
+
+\theorem[]{Zarski's Lemma}{
+    Let $K$ be a field. Let $L/K$ a field which is a finitely generated $K$-algebra. Then $L$ is a finite extension of $K$.
+}
+\begin{proof}[will fix this proof later]
+    We induct on the number of generators of $L$. 
+
+    Let $L=K[\alpha]$. If $\alpha$ is algebraic, we are done. Else $\alpha$ is transendental and $L \simeq K[x]$ which is not a field.
+
+    Suppose we have the statement for $m$ generated $L$. We want to show for \[
+    L=K[\alpha_0,\alpha_1,...,\alpha_m].
+    \]
+    Let $K_0=K(\alpha_0)$, $R_0=K[\alpha_0]$. 
+    $L=K_0[\alpha_1,...,\alpha_m]$, where each is algebraic over $K_0$ (induction).
+
+    Set $g_i(\alpha_i)=0,g_i\in K_0[t]$.
+
+    Let $s\in R_0\backslash \{0\}$, such that $s\cdot g_i\in R_0[t]\forall i$.
+
+    So $g_i$'s are monic with coefficients $R_0[1/s]$. $L=R_0[1/s][\alpha_1,...,\alpha_m]$.
+
+    So $L$ is finitely generated $R_0$-algebra. Each generator is integral over $R_0[1/s]$. So $L$ is integral over $R_0[1/s]$. In particular, $K_0$ is integral over $R_0[1/s]$. If $\alpha_0$ algebraic over $K$, we are done. Else, suppose that $\alpha_0$ is transendental over $K$. Then $R_0\simeq K[x]$.
+
+    Then we have $R_0[1/s]\simeq K[x][1/f(s)]$. $R_0$ is integrally closed (because it is PID so UFD), so that the integral closure of $R_0[1/s]=K_0[1/s]=R_0[1/s].$ Therefore $R_0[1/s]=K_0$.
+
+    This is not possible because $K[t][1/f(t)]$ is never a field. Just find a prime ideal that avoids $f(t)$ i.e. an irreducible polynomial that is not $f(t)$. As a concrete example, take maximal ideal containing $f(t)+1$. 
+\end{proof}
+
+
+\corollary[]{
+    Let $K$ be a field. Let $R$ a finitely generated $K$ algebra. Then for any maximal ideal $m\subseteq R$, $R/m$ is a finite extension of $K$.
+}
+\begin{proof}
+    Any quotient of $R$ is finitely generated as a $K$-algebra. Apply Zarski's lemma.
+\end{proof}
+
+\corollary[]{
+    Let $K$ be algebraically closed, $m\subset K[x_1,...,x_n]$. Then $m=(x_1-a_1,x_2-a_2,...,x_n-a_n)$ for some $a_i\in K$.
+}
+\begin{proof}
+    Mod $K[x_1,...,x_n]$ by $m$. This is a finite extension of $K$ which is $K$ because it is algebraically closed.
+    
+    Now the map $K[x_1,..,x_n]\to K$ is determined uniquely by where $x_i$ goes, so we have \[
+    (x_1-f(x_1),...,x_n-f(x_n))\subseteq \rm{ker}(f)= m.
+    \]
+    But the left hand side is maximal, so we are done. 
+\end{proof}
+
+\begin{remark}
+    If you relax the condition for algebraically closed, we map \[
+    K[x_1,...,x_n]\to \bar{K}.
+    \]
+    Each $x_1$ maps to the algebraic closure of $K$. 
+    Let $g_i$ be the minimal polynomial of $f(x_i)$, then $(g_i)\subseteq m$. The left hand side is maximal because \[
+    K[x_1,...,x_n]/(f_1(x_1))=K[\alpha_1,x_2,...,x_n]
+    \]
+    repeat this to get $K[x_1,...,x_n]/(f_i(x_i))=K[\alpha_1,...,\alpha_n]$.
+    \textcolor{red}{This only works if the polynomials are disjoint}.
+
+    Non-example: $\mathbb{Q}[x,y]\to \mathbb{C}$, where both $x,y\mapsto i$. Then we have kernel $(x^2+1,x-y)\supset (x^2+1,y^2+1)$.
+\end{remark}
+
+
+\corollary[]{
+    Let $I\subset K[x_1,...,x_n]$. Then there is some point in $\bar{K}$ such that there is some $a_1,...,a_n\in K^{a.c}$ such that $f(a_i)=0$ for all $f\in I$.
+}
+\begin{proof}
+    Take maximal ideal containing $I$. Mod by this ideal and embed the quotient into the algebraic closure of $K^{a.c.}$. Then the image of each $x_i$ is the $a_i$'s.
+\end{proof}
+
+\lemma[]{
+    Let $R,S$ be finitely generated $K$ algebras. Let $f:R\to S$. Then for maximal $m\subset S$ we have $f^{-1}(m)$ is maximal.
+}\begin{proof}
+    Let $m$ maximal. Then consider \[
+    R\stackon{f}{\to} S\stackon{e}{\to} S/m.
+    \]
+    Then $R/f^{-1}(m)\simeq e\circ f (R)$. By Zarski's lemma, $S/m$ is a finite extension of $K$. But now  the image of $R$ is a subring of $L$ containing $K$(*), so the image is a field. Therefore the pullback is maximal.
+
+
+    (*) each element is algebraic, so adjoining each element also adjoins the inverse.
+\end{proof}
