@@ -1,0 +1,79 @@
+\section{}
+Fulton algebraic curves chapter 1.
+\begin{remark}
+    I am just a child please be nice to me on the midterm.
+\end{remark}
+
+\begin{notation}
+    Let $K$ be an algebraically closed field for this lecture.
+\end{notation}
+
+\definition{Subvariety}
+{
+$Z\subseteq K^n$ is a \textbf{closed subvariety} if \[Z=Z(a)\defeq \{P\in K^n: g(P)=0\forall g\in a\}\] 
+ for some ideal $a \subseteq K[x_1,...,x_n]$
+}
+\begin{remark}
+    By the Strong Nullstellensatz, for any $f\in K[x_1,...,x_n]$ and $a$ ideal such that $f|_{Z(a)}=0$ then there is some $n$ such that $f^n\in a$. So we have bijection between radical ideals in $K[x_1,...,x_n]$ and closed subvarireties of $K^n$. 
+\end{remark}
+
+$K^n$ is $\max \spec K[x_1,...,x_n]$ which is a subspace of $\spec$. So the Zarski toplogy induces topology on $K^n$. We can think of this as evaluating function $f$ at $P$, or taking $f\mod m$ (which is the same as evaluation).
+
+
+We also have functions on $Z(a)$ are $K[x_1,...,x_n]/a$. Conversely, we can recover $Z(a)$ from $K[x_1,...,x_n]/a$ by looking at the MSpec. 
+
+\definition{Affine variety}{
+    An \textbf{affine variety} is an object of the form \[
+    \max\spec R
+    \] such that $R$ is a finitely generated $K$-algebra. 
+}
+\begin{remark}
+    Picking a ``presentation'' of $R$ i.e. $R=K[x_1,...,x_n]/I$. We get a map from $\max\spec R \to K^n$ with closed image and is a homeomorphism onto its image. 
+\end{remark}
+
+Given an affine variety, an open subvariety is an open subset (in the Zarski topology).
+
+\example[]{
+    For $K = \max\spec K[x]$ we have $K^{\times}$ is open. We can think of it as the set of points where $x(p)\neq 0$.
+
+    Nevertheless, this is an affine variety, as this is $K[x,x^{-1}]$ which has maximal ideals in bijection with maximal ideals in $K[x]$ that avoid $(x)$. The only maximal ideal that does not avoid $(x)$ is itself. Therefore the MSpec of this localization is an affine variety.
+
+    We view this $K[x,x^{-1}]$ as $K[x,y]/(xy-1)$. In $K^2$ the image of $K^{\times}\to K^2$ is equation $xy=1$ which is now closed. 
+
+    The map going from $K^{\times}\to K^2$ is the projection.
+}
+
+\proposition[]{
+    Let $V$ be an affine variety, $R$ finitely generated. Then for $f\in R$, $D(f)\subseteq V$ is an affine variety.  
+}
+\begin{proof}
+    $D(f)=\max\spec R[1/f]$. Give an extra variable $y$ and quotient further with $fy-1$ gives an embedding from $D(f)\to K^{n+1}$
+\end{proof}
+
+\example[]{
+    (proof left as exercise). Let $R$ be a finite $K$-algebra. Then $R$ has finitely many maximal ideals. (keyword: Artinian rings).
+}
+
+\theorem[]{Going donw for finitely generated $K$ algebras}{
+    Let $R_1$ be an integral domain, $R_2$ integral over $R_1$.
+
+    Let $\max\spec R_2\stackon{$\phi$}{\to}\max\spec R_1$. This is well defined because integral preserves maximal ideals. 
+    \begin{enumerate}
+        \item $\phi$ is surjective.
+        \item The fibers of $\phi$ are finite.
+    \end{enumerate}
+}\begin{proof}
+    For the first claim, we can always construct things in $R_2$ that contract to $m\subset R_1$.
+
+    For the second claim, 
+\end{proof}
+Now let $A$ be a finitely generated $K$ algebra and an integral domain. Noetherian normalization gives that it is a finite extension of $K[x_1,...,x_n]$. The map between max specs is surjective and has finite fibres.
+
+
+\example[]{
+    Consider $K[x,y]\to K[x,z]$ by sending $x\mapsto x$ and $y\mapsto xz$. $K[x,z]$ is not finitely generated as a module as $z^k$ are not integral.
+
+    But if you can invert $x$, then it is finite. Inverting $x$ is equivalent to throwing out the $y$ axis in $K^2$ ($x=0$).
+
+    The map between MSpec sends $(x,z) \mapsto (x,xz)$, so we get $(a,b/a)\mapsto (a,b)$. But if $x=0$, then $(x=0,y=c)$ intersects $K[x,y]$ at $x=0,y=0$, so the whole $y$ axis collapses to the origin.
+}

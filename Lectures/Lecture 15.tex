@@ -1,0 +1,70 @@
+\section{}
+
+\example[]{
+    Look at $\mathbb{C}$ with the Zarski topology. I.e. look at MSpec $\mathbb{C}[x]$. We cannot write this as a union of two closed strict subsets of $\mathbb{C}$. This is because by PID, closed sets are represented as $V(f)$, and contains finite set of points (or is the whole space).
+}
+\definition{Irreducible Topological Space}{
+    A topological space $X$ is \textbf{irreducible} if it cannot be written as $X=A\cup B$, where both $A$ and $B$ are closed strict subspaces of $X$.
+}
+\proposition{
+    $A^n\defeq K^n$ with the Zarski topology is irreducible. 
+}
+\begin{proof}
+    Suppose we can. Write $A^n=X\cup Y$, where $X=Z(I)$, $Y=Z(J)$. But then $X\cup Y=Z(IJ)$ gives $f$ vanishes everywhere on $A^n$ for all $f\in IJ$. So $IJ=0$. Because $K[x_1,...,x_n]$ is an integral domain, $I=0$ or $J=0$.
+\end{proof}
+\proposition[]{
+    Let $y$ be an affine variety i.e. $y=\max\spec R$, then if $f$ vanishes everywhere then $f$ is nilpotent.
+}\begin{proof}
+    Write $k[x_1,...,x_n]\to R$ with kernel $I$. Then we can identify $\max\spec R$ with $Z(I)$. But if $f$ vanishes on $Z(I)$ then $f\in r(I)$. So $f$ is nilpotent in $R$.
+\end{proof}
+
+\theorem[]{}{
+Suppose the radical of $R$ is $0$.
+    $V=\max\spec R $ is irreducible is irreducible if and only if $R$ is an integral domain. Equivalently, if $V=Z(I)\subseteq A^n$ we would have $I=r(I)$, which means $I$ is prime.
+}
+\begin{proof}
+    We prove the backward direction first.
+    Let $V=X\cup Y$ both closed, $X=Z(I), Y=Z(J)$. Then $V=Z(IJ)\implies IJ=(0)$. Since the ring is integral, we get $I$ or $J$ is $0$. 
+
+
+    For the other direction, if $R$ is not an integral domain, then we have $x,y\neq 0$, but $xy=0$. Then $Z((x))\cup Z((y))=V$.
+\end{proof}
+
+
+\definition{Noetherian space}{
+    A topological space $X$ is \textbf{Noetherian} if every sequence of closed subsets $X_1\supset X_2 \supset X_3..$ stabilizes. 
+}
+\begin{remark}
+    This is Noetherianess of a ring, but the inclusion is reversed.
+\end{remark}
+\proposition[]{
+    Let $R$ be Noetherian. Then $\max\spec R $ and $\spec R$ are noetherian.
+}
+\begin{remark}
+    The reverse implication is not necessarily true. This is because the zarski topology only looks at the radical ideals. For example take $\cup_n\mathbb{C}[[t^{1/2^n}]]$. It has a unique maximal ideal (constant term $=0$).
+\end{remark}
+\theorem[]{}{
+    Let $V$ be an affine variety. Then $V=X_1\cup ... \cup X_n$, where each $X_i$ is an irreducible closed subset of $V$. 
+}
+\begin{proof}
+    Suppose $V$ is irreducible. Then we are done. 
+
+    Else write $V=X_1\cup X_2$, each closed. Repeat the decomposition on $X_1$ and $X_2$. This must stabilize because $R=K[x_1,..,x_n]/I$ is Noetherian.
+\end{proof}
+\corollary[]{
+    $V=V(I)$, $X_i=V(p_i)$ gives $\cup X_i=V(\prod p_i)$. So the radical of $I$ is radical of product of finitley many prime ideals. 
+}
+\theorem[]{}{
+    If $0\neq p\subset K[x,y]$ is not maximal, then $p$ is principal and any $p'\supset p$ is maximal.
+}
+\begin{proof}
+    Let $f\in p$, by unique factorization we write $f=\prod f_i^{n_i}$, each prime (irreducible). WLOG suppose that $f_1\in p$. So let $f$ be a prime element in $p$. We claim $p=(f)$. Suppose not, then there is another prime element $g$ (by unique factorization) in $p$. We claim that there are only finitely many points where both $f$ and $g$ vanish. If so, $p$ only vanishes on finitely many points. Because $V(p)$ is irreducible, there $Z(p)$ can only have one point and thus $p$ is maximal.
+    
+    
+    To prove the claim, let $R=K[x,y]/(f)$. $g$ maps to something non zero in $R$. We want to show that there are only finitely many maximal ideals containing $g$ in $R$. 
+
+    \textbf{$R$ has transendence dimension $1$ over $K$}. (in other words, $R$ is an algebraic extension of $K[x]$). Noetherian normalization gives $R$ is a finite extension of $K[t]$. Write $g$ as a root of  \[
+    g^n + ...+b_1g+b_0=0, b_i\in K[t].
+    \]
+    Then all maximal ideals containing $g$ must contain $b_0$. But there are only finitely many maximal ideals in $K[t]$ that contain $b_0$. Moreover for each maximal ideal $n\subseteq K[t]$ we have finitely many ideals in $R$ contracting to $n$ (this is by the fact that $R$ is a finite $K[t]/n$) algebra.
+\end{proof}

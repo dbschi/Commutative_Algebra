@@ -1,0 +1,74 @@
+\section{}
+Prelim syllabus is almost done. Midterm after covering more spec stuff.
+
+Midterm on Monday May 12. 
+
+
+\definition{Jacobson ring}{
+    A ring $R$ is \textbf{Jacobson} if \[
+    \bigcap{m\supseteq I} m = r(I)
+    \] for all ideals $I\subsetneq R$.
+}\proposition[]{
+    A ring is Jacobson if and only if $\cap_{m\supseteq p}m =p$ for all prime ideals $p$.
+}
+\theorem[]{}{
+    Every finitely generated $K$-algebra is Jacobson.
+}
+\begin{proof}
+    \textcolor{red}{this proof is wrong, will fix}
+
+    It is enough to show that\[
+    \cap_{m\subset R} m = 0
+    \]
+    for every integral domain finitely generated $K$ algebra $R$. If this holds, let $R_0$ be a finitely generated $K$ algebra. Let $p_0\subset R_0$. Consider $R=R_0/p_0$. This is an integral domain. The intersection of all maximal ideals in $R$ is $\{0\}$, so the intersection of all maximal ideals in $R_0$ containing $p_0$ is $p_0$.
+
+
+
+    Now we show that statement. If $R$ is a polynomial ring $=K[x_1,...,x_n]$. We want to show that for any $f\neq 0$, there is some point in the algebraic closure such that evaluated at that point $f$ is non zero. This is true for $n=1$. For $n=2$, if there is a point $y_0\in K^{ac}$such that $f(x,y_0)\neq 0 $ we are done. Else we have $f(x,y_0)=0$ for all $y_0\in K^{ac}$. Consider $f$ as in $K(x)[y]$. 
+
+
+    todo... So no non zero $f$ is contained in all ideals.
+
+
+    In general, Noetherian normalization gives $R$ finite over a polynomial algebra. Recall there are bijections between prime (maximal) ideals of $K[x_1,...,x_n]$ and $R$ as $R$ integral over this polynomial algebra. Consider the intersection of all maximal ideals in $R$ with $K[x_1,...,x_n]$. This is the intersection of all maximal ideals of $K[x_1,...,x_n]$ and is thus the zero ideal.
+\end{proof}
+
+\subsection*{MSpec vs Spec}
+
+MaxSpec is the set of all closed points in Spec.
+
+If $R$ is Jacobson, for $\eta \in \spec$, we have $\bar{\eta}=\overline{\{y:y\in \max\spec ,y\in \bar{\eta}\}}$.
+
+
+Equivalently, Let $Z\subset \spec R$ be a closed subset. Then $Z\cap \max\spec R$ is dense in $Z$.
+
+
+\corollary[]{
+    For $R$ finitely generated $K$ algebra, closed subsets of $\spec R$ are in bijection with closed subsets of $\max\spec R$.
+}
+\begin{proof}
+    Take intersection and closure for the directions respectively.
+\end{proof}
+\example[]{
+    Exercise: show that these two maps are inverses of each other.
+}
+\corollary[]{
+    Every closed subset of $\max\spec R$ has the form $Z(a)=\{m\subseteq R, m\supseteq a\}$.
+}
+\theorem[]{Strong Nullstellensatz}{
+Let $a\subset K[x_1,...,x_n]$ be an ideal. If $f$ satisfies $f(P)=0$ for all $P\in (K^{ac})^n$, with $m_p\supset a$. Then $f\in r(a)$.
+
+$m_p$ is the maximal ideal corresponding to the point.
+
+
+If $K$ is algebraically closed, $Z(a)=\{P\in K:f(P)=0 \forall f\in a\}$.
+}
+\begin{proof}
+    Let $a=(g_1,...,g_m)$. Then consider the ideal \[
+    I=(g_1,...,g_m, 1-fy)\in K[x_1,...,x_n,y]
+    \]
+    We claim that there is no point $(a_1,...,a_n,b)\in (K^{ac})^{n+1}$ that $I$ vainishes. 
+    Suppose there is. Then $g_i(a_1,...,b)=0$ for all $i$. So then $f(a_1,...,a_n)=0$ But then $1-fb$ is non zero. 
+
+    By the nullstellensatz, $I=(1)$. Then we set $1=h_1g_1+...+h_mg_m+h(1-fy)$. Quotient this by $y=1/f$. Then $1=h_1'g_1+...+h_m'g_m$ for some $h_i'\in K[x_1,...,x_m][1/f]$. Clear denominators and we get $f^N=h''_1g_1+...+h''_mg_m\in a$.
+\end{proof}
