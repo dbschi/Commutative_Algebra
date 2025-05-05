@@ -1,0 +1,109 @@
+\section{Recap before midterm}
+\begin{quotation}
+    ``if you need to miss class because of an exam feel free to tell me so I can do non-essential stuff'' -- GOAT
+\end{quotation}
+Recaps
+\begin{adefinition}{Integral}{}
+    Let $A\subseteq B$. We say $\alpha \in B$ is \textbf{integral} over $A$ if $\alpha$ satisfies a \textbf{monic} polynomial in $A[x]$.
+\end{adefinition}
+\begin{aproposition}{}{}
+    $\alpha\in B$ is integral over $A$ if and only if there is a faithful $A[x]$-submodule of $B$ which is finitely generated as an $A$ module.
+\end{aproposition}
+From this proposition we deduce:
+\theorem[]{}{
+    The set of $\alpha\in B$ integral over $A$ is an $A$-subalgebra.
+}
+\definition{Finiteness}{
+    $B$ is a \textbf{finite} $A$-algebra if $B$ is finitely generated as an $A$-module.
+}
+\proposition[]{
+    $B$ is a finite $A$-algebra if and only if it is finitely generated as an $A$ algebra and every $\alpha\in B$ is integral. 
+}
+\corollary[]{
+    If $B/A$ integral and $C/B$ integral then $C/A$ integral.
+}
+\corollary[]{
+    Let $S\subset A$ multiplcatively closed. Then if $B/A$ integral then $S^{-1}B$ is integral over $S^{-1}A$.
+}
+\definition{Integrally closed}{
+    Let $A$ be an integral domain. Then $A$ is \textbf{integrally closed}/\textbf{normal} if all integral elements in $\rm{Frac} A$ are in $A$.
+}
+\example[]{
+    UFDs ($\mathbb{Z}[i],\mathbb{Z}[x],\mathbb{C}[x_1,...,x_n]$) are integrally closed. 
+
+    $\mathbb{Z}[\sqrt{5}]$ is not integrally closed. The fraction field contains $(1+\sqrt{5})/2$ which satisfies $x^2-x-1$.
+
+    $\mathbb{C}[x,y]/(y^2-x^3)$ is not normal. Can confirm that this ring is $\mathbb{C}[t^2,t^3]$ (send $x\mapsto t^2, y\mapsto t^3$ and check kernel). But the fraction field contains $t$ and satisfies monic polynomial. In general $\mathbb{C}[x,y]/(y^2-f(x))$ is integrally closed if and only if $f$ is square-free. 
+}
+
+\proposition[]{
+    Let $A$ and $B$ domains, and that $B/A$ integral, then $A$ is a field if and only if $B$ is a field.
+}
+\begin{remark}
+    Non example: $\mathbb{C}[x]/(x^2+1)$ is integral over $\mathbb{C}$ but has zero divisors.
+\end{remark}
+\corollary[]{
+    Let $A\subseteq B$ domains and $B/A$ integral. Then every element in $\rm{Frac}(B)$ is of the form $b/a$ for $b\in B$ and $a\in A$. 
+}
+\begin{proof}
+    Localize with $(A-\{0\})^{-1}$. Then $A^{-1}B$ is integral over the field of fractions, so is a field and is thus the field of fractions. 
+\end{proof}
+\proposition[]{
+    Let $A\subseteq B$ integral extension. Let $q \subset B$ prime and $p=q\cap A$. Then $p$ is maximal if and only if $q$ is maximal. 
+}
+\begin{proof}
+    $B/q$ is integral over $A/p$. Both are domains. Now apply the previous  proposition.
+\end{proof}
+
+\proposition[]{
+    Let $B/A$ integral. Let prime $p\subset A$. There is prime $q\subset B$ that pullsback to $p$.
+}
+
+\proposition[]{
+    Let $B/A$ integral. Let primes $q\subseteq q'\subset B$. Then if they pullback to the same ideal in $A$ they are the same ideal.
+}\example[]{
+    You can have multiple ideals pulling back to the same ideal without inclusion. Take $A=\mathbb{Z}$, $B=\mathbb{Z}[i]$. Then the ideals $(1+2i),(1-2i)$ are both prime and pullback to $(5)$.
+}
+\proposition[]{
+    Let $B$ be a finite $A$ algebra, then the fibers of spec is finite.
+}
+\begin{proof}
+    HW.
+\end{proof}
+
+\theorem[]{Going Up}{
+    Let $B/A$ integral. Let $q\subseteq B$ prime, $p\subseteq p' \subseteq A$ prime. Also suppose that $q\cap A = p$. Then there exists $q\subseteq q'\subseteq B$ prime such that it contracts to $p'$. 
+}\begin{proof}
+    Consider $A/p$ and $B/q$. We have a prime ideal of $\bar{q}'\subseteq B/q$ that contracts to $p'/p\subseteq A/p$. Now take the preimage of $\bar{q}'$ in $B$. We can check that it contracts to $p'$.
+\end{proof}
+
+\theorem[]{Going down}{
+    Let $B/A$ integral. \textcolor{red}{Further assume that $A$ is an integral domain and is integrally closed.} Let $q\subseteq B$ prime, $p'\subseteq p \subseteq A$ prime. Also suppose that $q\cap A = p$. Then there exists $q'\subseteq q\subseteq B$ prime such that it contracts to $p'$. 
+}
+\corollary[]{
+    Going up and down also holds for extending chains by induction.
+}
+
+\theorem[]{Noetherian Normaliztion}{
+    Let $K$ be a field, $R$ a finitely generated $K$ algebra. Then $R$ is finite over a polynomial algebra.
+}\begin{remark}
+    This theorem is powerful for when $R$ is a domain. $K[x_1,...,x_n]$ is integrally closed (UFD). Therefore you can apply going up and going down to extend chains of prime ideals in $K[x_1,...,x_n]$. 
+    
+    In the chain of prime ideals, the inclusion in $R$ is strict if and only if the inclusion in $K[x_1,...,x_n]$ is strict.
+\end{remark}
+
+
+\theorem[]{}{
+   Let $B/A$ integral. Then TFAE:
+
+    \begin{enumerate}
+        \item Any maximal chain of prime ideals in $A$ consists of $n+1$ prime ideals.
+        \item Any maximal chain of prime ideals in $B$ consists of $n+1$ prime ideals. 
+    \end{enumerate}
+}
+\theorem[]{}{
+    Let $R$ be an integral domain which is finitely generated as a $K$ algebra. Then any maximal chain of prime ideals in $R$ has $1+d$ elements where $d$ is the transendence degree of $\rm{Frac}(R)$.
+}
+\definition{Krull Dimension}{
+    Let $R$ be a ring. The \textbf{Krull dimension} of $R$ is the length of the maximal chain of prime ideals $-1$. 
+}
