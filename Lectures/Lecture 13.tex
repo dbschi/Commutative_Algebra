@@ -12,25 +12,29 @@ Midterm on Monday May 12.
     A ring is Jacobson if and only if $\cap_{m\supseteq p}m =p$ for all prime ideals $p$.
 }
 \theorem[]{}{
-    Every finitely generated $K$-algebra is Jacobson.
+    Every finitely generated $K$-algebra $R$ is Jacobson.
 }
 \begin{proof}
-    \textcolor{red}{this proof is wrong, will fix}
 
     It is enough to show that\[
-    \cap_{m\subset R} m = 0
+    \bigcap_{m\subset R} m = 0
     \]
-    for every integral domain finitely generated $K$ algebra $R$. If this holds, let $R_0$ be a finitely generated $K$ algebra. Let $p_0\subset R_0$. Consider $R=R_0/p_0$. This is an integral domain. The intersection of all maximal ideals in $R$ is $\{0\}$, so the intersection of all maximal ideals in $R_0$ containing $p_0$ is $p_0$.
+    for every integral domain finitely generated $K$ algebra $R$. If this holds, let $R_0$ be a finitely generated $K$ algebra. Let $p_0\subset R_0$. Consider $R=R_0/p_0$. This is a finitely generated integral domain, so $(0)$ is prime. The intersection of all maximal ideals in $R$ is $\{0\}$, so the intersection of all maximal ideals in $R_0$ containing $p_0$ is $p_0$.
 
 
 
-    Now we show that statement. If $R$ is a polynomial ring $=K[x_1,...,x_n]$. We want to show that for any $f\neq 0$, there is some point in the algebraic closure such that evaluated at that point $f$ is non zero. This is true for $n=1$. For $n=2$, if there is a point $y_0\in K^{ac}$such that $f(x,y_0)\neq 0 $ we are done. Else we have $f(x,y_0)=0$ for all $y_0\in K^{ac}$. Consider $f$ as in $K(x)[y]$. 
+    Now we show that statement. Consider the special case where $R$ is a polynomial ring $=K[x_1,...,x_n]$. We want to show that for any $f\neq 0$, there is some point in the algebraic closure such that evaluated at that point $f$ is non zero. Suppose this work is true, then the maximal ideal corresponding to that point does not contain $f$. 
+    
+    This is true for $n=1$. For $n=2$, if there is a point $y_0\in K^{ac}$such that $f(x,y_0)\neq 0 $ we are done. Else we have $f(x,y_0)=0$ for all $y_0\in K^{ac}$. Consider $f$ as in $K(x)[y]$.
 
 
-    todo... So no non zero $f$ is contained in all ideals.
-
-
-    In general, Noetherian normalization gives $R$ finite over a polynomial algebra. Recall there are bijections between prime (maximal) ideals of $K[x_1,...,x_n]$ and $R$ as $R$ integral over this polynomial algebra. Consider the intersection of all maximal ideals in $R$ with $K[x_1,...,x_n]$. This is the intersection of all maximal ideals of $K[x_1,...,x_n]$ and is thus the zero ideal.
+    Now we solve for a general $R$. By Noetherian normalization, $R$ is finite over some $K$-algebra $K[x_1,...,x_n]$. Let $0\neq f\in m$ for every $m\in R$. Consider the minimal polynomial \[
+    f^k +a_{k-1}f^{k-1}+...+a_1f + a_0=0,
+    \]
+    for $a_i\in K[x_1,...,x_n]$. So that \[
+    a_0 = -f^k - ... - a_1f \in m.
+    \]
+    But now $a_0 \in \cap_{m\subset K[x_1,...,x_n]} m =0$ so $a_0=0$. This gives a contradiction.
 \end{proof}
 
 \subsection*{MSpec vs Spec}
