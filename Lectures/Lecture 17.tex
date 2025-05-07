@@ -1,0 +1,51 @@
+\section{Dimension}
+
+Goal of today:
+Recall the definition of Krull Dimension.
+\definition{Krull Dimension}{
+    Let $R$ be a ring. The \textbf{Krull dimension} of $R$ is the length of the maximal chain of prime ideals minus $1$. 
+}
+\begin{remark}
+    Krull dimension of a field is $0$. The Krull dimension of a PID is $1$.
+\end{remark}
+We want to prove the following result.
+\theorem[lecture17main]{}{
+    Let $R$ be an integral domain which is finitely generated as a $K$ algebra. Then \begin{enumerate}
+        \item Any two maximal chains of prime ideals have the same length.
+        \item The Krull dimension of $R$ is the transendence degree of $\rm{Frac}(R)$.
+    \end{enumerate}
+}
+
+\lemma[]{
+    Let $p$ be a minimal non-zero prime ideal of $K[x_1,...,x_n]$. Then $p$ is principal.
+}
+\begin{proof}
+    Let $\alpha\in p$. By UFD property we can write $\alpha=f_1...f_n$, where each $f_i$ is prime. WLOG by primality of $p$ we set $f_1\in p$. So $p$ contains a prime element $f$. Then $p\supset (f)$. By minimality $(f)=p$.
+\end{proof}
+\corollary[]{
+    Let $R$ be a unique factorization domain. Then every minimal prime ideal is principal.
+}
+\lemma[]{
+    Let $(p)\subset K[x_1,...,x_n]$ be a principal prime ideal. The transendence degree of Frac $K[x_1,...,x_n]$ is $n-1$.
+}
+\begin{proof}
+    Exercise. Suppose $p$ contains every variable $x_i$. Then every element $(p)$ contains every variable $x_i$. So that $[x_1],...,[x_n]$ are algebraically independent in $K[x_1,...,x_n]/(p)$. So the transendence degree is at least $n-1$. 
+
+    But since we have $x_n$ dependent with the remaining $[x_i]$'s and they generate $K[x_1,...x_n]/(p)$, the transendence degree is less than $n$. 
+
+    If $p$ does not contain every variable, then consider $p$ in $K[x_1,...,x_m]$ and set \[\frac{K[x_1,...,x_m]}{(p)}[x_{m+1},...,x_n]\simeq \frac{K[x_1,...,x_n]}{(p)}.\]
+\end{proof}
+\begin{proof}[Proof of theorem \ref{thm:lecture17main}]
+    By Noetherian normalization, $R$ is finte over some $K[x_1,...,x_n]$. Thus by \ref{thm:chainintegral} it suffices to show that any maximal chain of prime ideals in $R$ has $n+1$ ideals. 
+
+    We induct on the transendence degree of Frac $R=n$. It is obviously true for $n=0$, as fields have chains of length $1$. 
+
+    Now if it works for $n-1$, we obtain a minimal prime ideal $p$ which is principal. 
+
+    Now the remaining chain of prime ideals corresponds to a maximal chain of prime ideals in $K[x_1,...,x_n]/(p)$ which has transendence degree $n-1$. So the maximal chain has $n+1$ ideals.
+
+
+    \textcolor{red}{So far we have proved that the maximal length -1 is less than or equal to the transendence degree}
+
+\end{proof}
+
