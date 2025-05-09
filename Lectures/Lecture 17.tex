@@ -26,7 +26,7 @@ We want to prove the following result.
     Let $R$ be a unique factorization domain. Then every minimal prime ideal is principal.
 }
 \lemma[]{
-    Let $(p)\subset K[x_1,...,x_n]$ be a principal prime ideal. The transendence degree of Frac $K[x_1,...,x_n]$ is $n-1$.
+    Let $(p)\subset K[x_1,...,x_n]$ be a principal prime ideal. The transendence degree of Frac $K[x_1,...,x_n]/(p)$ is $n-1$.
 }
 \begin{proof}
     Exercise. Suppose $p$ contains every variable $x_i$. Then every element $(p)$ contains every variable $x_i$. So that $[x_1],...,[x_n]$ are algebraically independent in $K[x_1,...,x_n]/(p)$. So the transendence degree is at least $n-1$. 
@@ -34,6 +34,12 @@ We want to prove the following result.
     But since we have $x_n$ dependent with the remaining $[x_i]$'s and they generate $K[x_1,...x_n]/(p)$, the transendence degree is less than $n$. 
 
     If $p$ does not contain every variable, then consider $p$ in $K[x_1,...,x_m]$ and set \[\frac{K[x_1,...,x_m]}{(p)}[x_{m+1},...,x_n]\simeq \frac{K[x_1,...,x_n]}{(p)}.\]
+\end{proof}
+\lemma[]{
+    Let $p \subset R$ be a minimal prime ideal. The transendence degree of Frac $R/p$ is $n-1$.
+}
+\begin{proof}
+    $p\cap K[x_1,...,x_n]$ is minimal. If not, apply going down. Then $R/p$ is integral over $R/( p \cap K[x_1,...,x_n])$ which has transendence degree $n-1$.
 \end{proof}
 \begin{proof}[Proof of theorem \ref{thm:lecture17main}]
     By Noetherian normalization, $R$ is finte over some $K[x_1,...,x_n]$. Thus by \ref{thm:chainintegral} it suffices to show that any maximal chain of prime ideals in $R$ has $n+1$ ideals. 
@@ -43,9 +49,5 @@ We want to prove the following result.
     Now if it works for $n-1$, we obtain a minimal prime ideal $p$ which is principal. 
 
     Now the remaining chain of prime ideals corresponds to a maximal chain of prime ideals in $K[x_1,...,x_n]/(p)$ which has transendence degree $n-1$. So the maximal chain has $n+1$ ideals.
-
-
-    \textcolor{red}{So far we have proved that the maximal length -1 is less than or equal to the transendence degree}
-
 \end{proof}
 
