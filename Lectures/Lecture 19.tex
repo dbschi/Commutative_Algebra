@@ -1,0 +1,147 @@
+\section{Limits}
+\newcommand{\dlim}{\varinjlim}
+\newcommand{\ilim}{\varprojlim}
+One of the hardest questions on the exam was the second question:
+
+\begin{aexample}{Midterm question 2}{}
+    Show that Spec $R$ is disconnected if and only if there is a non-trivial idempotent element.
+\end{aexample}
+\begin{proof}
+    For the backward direction, let $e$ be non trivial and idempotent. Then take $V(1-e)$ and $V(e)$ disjoint closed sets covering spec.
+
+    For the forward direction, let $\spec R = V(I)+V(J)$. Then $I+J=R$ and $IJ\subseteq n(R)$. Let $a\in I, b\in J$ such that $a+b=1$, and $(ab)^k=0$.
+
+    Then consider $1=(a+b)^k = a^k+b^k + ab(\rm{something})$. Therefore $a^k+b^k$ is $1$ plus a nilpotent element which means it is a unit. Set $s$ to be the inverse, then we have \[
+    sa^k = sa^k s(a^k+b^k) = s^2 a^{2k}.
+    \]
+    $a$ is not zero or unit, so we are done.
+
+\end{proof}
+\begin{remark}
+    Moral of the story: if you have nilpotent elements, usually raise it to that power or a multiple of the power.
+\end{remark}
+
+
+
+Check Aluffi on limits and stuff.
+\begin{quotation}
+    The cool people call direct limits ``colimits'' and inverse limits ``limits''. I have no idea why. - Ananth Shankar, 2025
+\end{quotation}
+
+
+\definition{Limits and colimits}{
+    A limit is a terminal/final object in a slice category. A colimit is a final object in a slice category.
+}
+\definition{Directed system}{
+    A directed system gives maps for $i\leq j$, $\psi_{i,j}:R_i\to R_j$ that satisfy $\psi_{j,k}\psi_{i,j}=\psi_{i,k}$, and $\psi_{i,i}$ is the identity.
+
+}
+\definition{Direct Limit}{
+    The direct limit is given by \[
+    \dlim_i R_i = \cup R_i/\sim,
+    \]
+    where the equivalence relation is $a_i\in R_i \sim a_j\in R_j$ if $\exists k$ s.t. $i\leq k, j\leq k$ and $\psi_{i,k} (a_i)=\psi_{j,k}(a_j)$.
+
+    This is equipped with injections \[
+    \iota_i: R_i\to \dlim_i R_i
+    \]
+    by the natural embedding.
+}
+\begin{aproposition}{Universal property of direct limits}{}
+    Let $I$ be a directed set and $R_i: i\in I$ be a direct system of Rings. The direct limit satisfies the following universal property:
+
+    \begin{quotation}
+        Let $A$ be a ring and maps $f_i:R_i\to A$. Then there exists $f:\dlim_i R_i \to A$ such that the following diagram commutes.
+    \end{quotation}
+    \[\begin{tikzcd}
+	{R_i} \\
+	{\varinjlim_i R_i } & A
+	\arrow["{\iota_i}",from=1-1, to=2-1]
+	\arrow["{f_i}", from=1-1, to=2-2]
+	\arrow["f"', dashed, from=2-1, to=2-2]
+\end{tikzcd}\]
+\end{aproposition}
+
+\begin{remark}
+    We can use a different formulation here. We define the direct limit to be the initial object of the slice category defined by the commutative diagram% https://q.uiver.app/#q=WzAsNSxbMSwwLCJSXzMiXSxbMiwwLCJSXzIiXSxbMywwLCJSXzEiXSxbMCwwLCIuLi4iXSxbMiwyLCJYIl0sWzAsMV0sWzEsMl0sWzMsMF0sWzIsNF0sWzEsNF0sWzAsNF0sWzMsNF1d
+\[\begin{tikzcd}
+	{...} & {R_3} & {R_2} & {R_1} \\
+	\\
+	&& X
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=3-3]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-2, to=3-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-4, to=3-3]
+\end{tikzcd}\]
+(used 1,2,3 indices for simplicity) Then colimit satisfies the universal property of direct limits. By uniqueness this will be the direct limit up to isomorphism. Then we can verify that the definition of the direct limit indeed satisfies this universal property of being an initial object, thus direct limit exists.
+
+
+
+Similarly, the inverse limit is the final object of the slice category of 
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJSXzMiXSxbMiwwLCJSXzIiXSxbMywwLCJSXzEiXSxbMCwwLCIuLi4iXSxbMiwyLCJYIl0sWzQsMl0sWzIsMV0sWzEsMF0sWzAsM10sWzQsMF0sWzQsMV0sWzQsM11d
+\[\begin{tikzcd}
+	{...} & {R_3} & {R_2} & {R_1} \\
+	\\
+	&& X
+	\arrow[from=1-2, to=1-1]
+	\arrow[from=1-3, to=1-2]
+	\arrow[from=1-4, to=1-3]
+	\arrow[from=3-3, to=1-1]
+	\arrow[from=3-3, to=1-2]
+	\arrow[from=3-3, to=1-3]
+	\arrow[from=3-3, to=1-4]
+\end{tikzcd}\]
+\end{remark}
+
+
+\example[]{
+    Let $A$ be a ring, and $S\subset A-\{0\}$ multiplicatively closed and contains $1$. 
+
+    Express $S^{-1}A$ as a direct limit of rings. I.e. $A_f, f\in S$.
+
+    where $r_1\leq r_2$ if $r_2=r_1 a$. Should have maps $A_{r_1}\to A_{r_2}$.
+
+}
+
+\begin{proof}
+    exercise. 
+\end{proof}
+
+\example[]{
+    Let $S=\{K\subseteq \mathbb{C} st [K:\mathbb{Q}] \rm{finite}\}$. With partial order on inclusion. 
+
+    Then $\overline{\mathbb{Q}}$ is the direct limit of this system.
+}
+\definition{Inverse Limit}{
+    For a directed system with morphisms $\psi_{i,j}R_i\to R_j$ for $i\geq j$, the inverse limit is given by the subset \[
+    \ilim_{i}R_i \defeq\{r\in \prod_{i\in I}R_i: r=(r_i)_{i\in I}, \psi_{i,j}(r_i)=r_j\}.
+    \]
+    This is equippend with the projection maps \[
+    \pi_i: \ilim_{i}R_i\to R_i.
+    \]
+}
+\example[]{Consider the chain of maps \[
+R/(p)^n \to  R/(p)^{n-1}.
+\]
+The inverse limit \[\ilim_n \mathbb{Z}/p^n\mathbb{Z}\defeq \mathbb{Z}_p\subseteq \prod_n \mathbb{Z}/p^n\mathbb{Z}\] with for each element $a=(...,a_2,a_1,a_0)$ we have $a_n \mapsto a_{n-1}$.
+
+
+This is a ring with addition, multiplication ptwise, zero element all zeros, 1 element all 1s. }
+
+
+
+\proposition[]{
+    There is an injection for $\mathbb{Z}\to \mathbb{Z}_p$.
+}
+\begin{proof}
+    Let $n\in \mathbb{Z}$ map to $0$ in $\mathbb{Z}_p$. Then $n$ divides every power of $p$. By unique factorization, $n$ is zero. 
+\end{proof}
+\proposition[]{
+    $\mathbb{Z}_p$ is in integral domain.
+}
+\begin{proof}
+    Let $a,b\neq 0$ in $\mathbb{Z}_p$. Then for some entry $a_i$ and $b_i$ onwards these enties are not zero. Consider $a_{2i}b_{2i}$. $p^i$ does not divide $a_{2_i}$ so $p^{2i}$ does not divide $a_{2i}b_{2i}$ by unique factorization.
+\end{proof}

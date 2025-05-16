@@ -6,6 +6,7 @@
 }
 \usepackage{blindtext}
 \usepackage{tikz,tcolorbox,tikz-3dplot}
+\usetikzlibrary{cd}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 \usepackage{xcolor}
@@ -305,7 +306,7 @@
 \maketitle
 \tableofcontents
 \newcounter{lecture}
-\forloop{lecture}{1}{\value{lecture}<19}
+\forloop{lecture}{1}{\value{lecture}<20}
 {
 	\input{Lectures/Lecture \arabic{lecture}.tex}
 }
