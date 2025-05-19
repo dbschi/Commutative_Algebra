@@ -18,19 +18,77 @@
 	\arrow["{=}"{description}, draw=none, from=2-2, to=2-3]
 \end{tikzcd}\]
 
-    But then this means $\pi$ factors through $\rm{ker}(g)$. So that $\rm{Im}(f)\supseteq \rm{ker}(g)$.
+    But then this means $\pi$ factors through $\rm{ker}(g)$. So that $\rm{Im} (f)\supseteq \rm{ker}(g)$.
 
 
 
-    For the other inclusion, take $M=C$. The identity from $C\to C$ maps to $f\circ g$ becomes zero by exactness.  
+    For the other inclusion, take $M=C$. The identity from $C\to C$ maps to $g\circ f$ becomes zero by exactness.  
 \end{proof}
 
+\begin{aproposition}{assigned as exericse}{}
+    The contravariant functor $\hom{-,N}$ sends right exact sequences to left exact sequences.
+\end{aproposition}
+\begin{proof}
+     Let $A\stackon{$f$}{\to} B \stackon{$g$}{\to} C \to 0$. We want \[
+     0\to \hom{C,N} \to \hom{B,N}\to \hom{A,N}
+     \]
+     exact.
+    Let $\alpha:C\to N$. Because $g$ is an epimorphism (surjective) we have for $\alpha\circ g=0=0\circ g \implies \alpha=0$. So we have exactness at $\hom{C,G(M)}$.
+
+    For the exactness at $B$, the composite is zero from $g\circ f=0$. This gives one inclusion. Now let $\alpha:B\to N$ such that $\alpha\circ f=0$. Then $\rm{ker}(g)=\rm{Im}(f)\subseteq \rm{ker}(\alpha)$. By the mapping property of quotients we have a lift
+\[\begin{tikzcd}
+	B & {B/\rm{ker}(g)} & C \\
+	& M
+	\arrow["g", from=1-1, to=1-2]
+	\arrow["\alpha"', from=1-1, to=2-2]
+	\arrow["{=}"{description}, draw=none, from=1-2, to=1-3]
+	\arrow[dashed,from=1-2, to=2-2]
+\end{tikzcd}\]
+
+\end{proof}
+Similarly we have the same statement for the covariant functor
+\begin{aproposition}{assigned as exericse}{}
+      In $R$-mod, $A\stackon{$f$}{\to} B \stackon{$g$}{\to} C$ is exact if $\hom{N,A}\to \hom{N,B} \to \hom{N,C}$ is exact for all $N$.
+
+
+\end{aproposition}
+\begin{proof}
+    For the first inclusion, take $N=A$, so then we have $g\circ f =0$ by considering the identity from $A\to A$. Now we want $\rm{ker} \ g \subseteq \rm{im} \ f$. Pick $N=\rm{ker} \ g$. Then the composite $N\to B \to C$ is zero, so has a lift $N\to A\to B \to C$.
+    \[\begin{tikzcd}
+	{\rm{ker} \ g} & {\rm{ker} \ g} \\
+	A & B & C
+	\arrow[dashed, from=1-1, to=2-1]
+	\arrow[hook, from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+\end{tikzcd}\] But this is a lift of the embedding of $\rm{ker } \ g $ into $B$, so the kernel of $g$ is a subset of the image of $f$.
+\end{proof}
+\begin{aproposition}{assigned as exercise}  {}
+    The covariant functor $\hom{N,-} $ sends left exact sequences to left exact sequences. 
+\end{aproposition}
+\begin{proof}
+     Let $0\to A\stackon{$f$}{\to} B \stackon{$g$}{\to} C$. We want \[
+     0\to \hom{N,A} \to \hom{N,B}\to \hom{N,C}
+     \]
+     exact.
+     Because $f$ is injective, this is an monomorphism so we have $\hom{N,A}\to \hom{N,B}$ injective. This gives exactness at $\hom{N,A}$.
+
+     For exactness at $B$, we have that the composition $g\circ f=0$, so that gives one inclusion. For the other inclusion, let $N\stackon{$h$}{\to} C$ such that $g\circ h =0$. Then $\rm{Im} \ h\subseteq \rm{ker}\ g = \rm{Im} \ f$. $f$ is injective, so we can identify $\rm{Im} \ f$ with its preimage in $A$. This gives us a factoring of $h$ through $\rm{Im} \ f $ in $A$.
+\end{proof}
 \definition[]{Adjoint}{
     Let $\mathcal{C},\mathcal{D}$ categories. Let $F:\mathcal{C}\to \mathcal{D}$ and $G:\mathcal{D}\to \mathcal{C}$ functors. We say $F$ is a left adjoint of $G$ and $G$ is a right adjoint of $F$ if \[
         \hom{F(x),y} \quad \stackon{natural isom.}{\simeq} \quad \hom{x,g(y)}
     \]
 }\begin{remark}
-    \todo explain natural isomorphism
+    As a recall natural isomorphism means that for every pair $(x,y)\in \mathcal{C}\times \mathcal{D}$ there is an isomorphism in set $\eta_{x,y}\rm{Hom}{\rm{Set}}{\hom{F(x),y},\hom{x,G(y)}}$ such that the following square commutes for every pair of morphisms $(f,g) \in \rm{Hom}_{\mathcal{C}}(x_1,x_2)\times \rm{Hom}_{\mathcal{D}}(y_1,y_2)$
+    \[\begin{tikzcd}
+	{\rm{Hom}_{\mathcal{D}}(F(x_1),y_1)} && {\rm{Hom}_{\mathcal{D}}(F(x_2),y_2)} \\
+	{\rm{Hom}_{\mathcal{C}}(F(x_1),y_1)} && {\rm{Hom}_{\mathcal{C}}(F(x_2),y_2)}
+	\arrow["{\rm{Hom}_{\mathcal{D}}(F(f),g)}", from=1-1, to=1-3]
+	\arrow["{\eta_{x_1,y_1}}"', from=1-1, to=2-1]
+	\arrow["{\eta_{x_2,y_2}}", from=1-3, to=2-3]
+	\arrow["{\rm{Hom}_{\mathcal{C}}(f,G(g))}"', from=2-1, to=2-3]
+\end{tikzcd}\]
 \end{remark}
 \theorem[]{}{
     In the setting of $R$-Mods, $S$-Mods,
@@ -43,36 +101,40 @@
 
     By adjointness, this is equivalent to saying that 
     \[
-    0 \to \hom{C,G(M)}\to \hom{B,G(M)}\to \hom{A,G(M)}  \] is exact for every $M$.
+    0 \to \hom{C,G(M)}\to \hom{B,G(M)}\to \hom{A,G(M)}  \] is exact for every $M$. But this is a direct result of (let $N=G(M)$) the (left) exactness of the functor $\hom{-,N}$.
 
-
-    Let $N=G(M)$. Let $\alpha:C\to N$. Because $g$ is an epimorphism if $\alpha\circ g=0=0\circ g$ then $\alpha=0$. So we have exactness at $\hom{C,G(M)}$.
-
-    For the other exactness, the composite is zero from $g\circ f=0$. Now let $\alpha:B\to N$ such that $\alpha\circ f=0$. Then $\rm{ker}(g)=\rm{Im}(f)\subseteq \rm{ker}(\alpha)$. By the mapping property of quotients we have a lift
-\[\begin{tikzcd}
-	B & {B/\rm{ker}(g)} & C \\
-	& M
-	\arrow["g", from=1-1, to=1-2]
-	\arrow["\alpha"', from=1-1, to=2-2]
-	\arrow["{=}"{description}, draw=none, from=1-2, to=1-3]
-	\arrow[dashed,from=1-2, to=2-2]
+    For the left exactness of $G$, we want \[
+    0\to G(A)\to G(B)\to G(C)
+    \] exact, so we want to show exactness of \[\begin{tikzcd}
+	0 & {\rm{Hom}(N,G(A))} & {\rm{Hom}(N,G(B))} & {\rm{Hom}(N,G(C))} \\
+	0 & {\rm{Hom}(F(N),A)} & {\rm{Hom}(F(N),B)} & {\rm{Hom}(F(N),C)}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\simeq", from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["\simeq", from=1-3, to=2-3]
+	\arrow["\simeq", from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
 \end{tikzcd}\]
-
-The other part is left as an exercise.
+Which is true by the left exactness of the covariant functor.
 \end{proof}
+
 \example[]{
-    In $R$-mod, $A\to B\to C$ is exact if $\hom{N,A}\to \hom{N,B} \to \hom{N,C}$ is exact for all $N$.
-
-
-
-    Moreover, the contravariant functor $\hom{-,N}$ sends right exact sequences to left exact sequences.
-
-
-    Finally, the covariant functor $\hom{N,-} $ sends left exact sequences to left exact sequences. 
-    
-    
-    For a counterexample, show that exactness is not necessarily preserved in the other cases. 
+    Show that $\otimes N$ and $\hom{N,-}$ are adjoints. 
 }
-\example[]{
-    Show that $\otimes M$ and $\hom{M,-}$ are adjoints. 
+\begin{proof}
+    Consider this pair of morphisms. We can check that they are inverses of each other and are well defined, and are natural.
+    \[\begin{tikzcd}
+	{\rm{Hom}(A\otimes N,B)} && {\rm{Hom}(A,\rm{Hom}(N,B))} \\
+	f && {[a\mapsto (n\mapsto f(a\otimes n))]} \\
+	{a\otimes n\mapsto f(a)(n)} && g
+	\arrow["\simeq"', from=1-1, to=1-3]
+	\arrow[maps to, from=2-1, to=2-3]
+	\arrow[maps to, from=3-3, to=3-1]
+\end{tikzcd}\]
+\end{proof}
+\corollary[]{
+    $\otimes M$ is right adjoint. $\hom{M,-}$ is left adjoint.
 }
