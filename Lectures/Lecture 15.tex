@@ -1,13 +1,13 @@
 \section{}
 
 \example[]{
-    Look at $\mathbb{C}$ with the Zarski topology. I.e. look at MSpec $\mathbb{C}[x]$. We cannot write this as a union of two closed strict subsets of $\mathbb{C}$. This is because by PID, closed sets are represented as $V(f)$, and contains finite set of points (or is the whole space).
+    Look at $\mathbb{C}$ with the Zariski topology. I.e. look at MSpec $\mathbb{C}[x]$. We cannot write this as a union of two closed strict subsets of $\mathbb{C}$. This is because by PID, closed sets are represented as $V(f)$, and contains finite set of points (or is the whole space).
 }
 \definition{Irreducible Topological Space}{
     A topological space $X$ is \textbf{irreducible} if it cannot be written as $X=A\cup B$, where both $A$ and $B$ are closed strict subspaces of $X$.
 }
 \proposition{
-    $A^n\defeq K^n$ with the Zarski topology is irreducible. 
+    $A^n\defeq K^n$ with the Zariski topology is irreducible. 
 }
 \begin{proof}
     Suppose we can. Write $A^n=X\cup Y$, where $X=Z(I)$, $Y=Z(J)$. But then $X\cup Y=Z(IJ)$ gives $f$ vanishes everywhere on $A^n$ for all $f\in IJ$. So $IJ=0$. Because $K[x_1,...,x_n]$ is an integral domain, $I=0$ or $J=0$.
@@ -41,7 +41,7 @@ Suppose the radical of $R$ is $0$.
     Let $R$ be Noetherian. Then $\max\spec R $ and $\spec R$ are noetherian.
 }
 \begin{remark}
-    The reverse implication is not necessarily true. This is because the zarski topology only looks at the radical ideals. For example take $\cup_n\mathbb{C}[[t^{1/2^n}]]$. It has a unique maximal ideal (constant term $=0$).
+    The reverse implication is not necessarily true. This is because the Zariski topology only looks at the radical ideals. For example take $\cup_n\mathbb{C}[[t^{1/2^n}]]$. It has a unique maximal ideal (constant term $=0$).
 \end{remark}
 \theorem[]{}{
     Let $V$ be an affine variety. Then $V=X_1\cup ... \cup X_n$, where each $X_i$ is an irreducible closed subset of $V$. 
