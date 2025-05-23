@@ -1,0 +1,138 @@
+\section{}
+
+\begin{aexample}{Calculating Tor}{}
+    Let $R=K[x,y]$. We want to find $\rm{Tor}(K,K)$.
+
+    We have a free resolution
+    \[\begin{tikzcd}
+	& 1 & {(y,-x)} & 0 \\
+	... 0 & R & {R^2} & R & R & K & 0 \\
+	&& {(a,b)} & {(ax+by)}
+	\arrow[maps to, from=1-2, to=1-3]
+	\arrow[maps to, from=1-3, to=1-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[two heads, from=2-5, to=2-6]
+	\arrow[from=2-6, to=2-7]
+	\arrow[maps to, from=3-3, to=3-4]
+\end{tikzcd}\]
+
+Tensor with $K$ and we get 
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJLIl0sWzIsMCwiS14yIl0sWzMsMCwiSyJdLFs0LDAsIjAiXSxbMCwwLCIwIl0sWzAsMSwiMCJdLFsxLDIsIjAiXSxbMiwzXSxbNCwwXV0=
+\[\begin{tikzcd}
+	0 & K & {K^2} & K & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["0", from=1-2, to=1-3]
+	\arrow["0", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+The boundary maps $\times x, \times y$ all become the zero maps. So we have the homology is exactly the module in the respective degree.
+\end{aexample}
+\example[]{
+    As an exercise, calculate Tor of $(m,K)$ and $(K,m)$, for $m=(x,y)$. (this will be on final w.h.p)
+    Verify that they are the same.
+}
+
+
+\subsection*{Tor and long exact sequences} 
+\begin{atheorem}{Long Exact Sequence of Tor}{}
+    
+Let $0\to M'\to M\to M''\to 0$ exact. We have a long exact sequence 
+% https://q.uiver.app/#q=WzAsMTEsWzAsMSwiXFxybXtUb3J9XjIoTScsTikiXSxbMSwxLCJcXHJte1Rvcn1eMihNLE4pIl0sWzIsMSwiXFxybXtUb3J9XjIoTScnLE4pIl0sWzAsMiwiXFxybXtUb3J9XjEoTScsTikiXSxbMSwyLCJcXHJte1Rvcn1eMShNLE4pIl0sWzIsMiwiXFxybXtUb3J9XjEoTScnLE4pIl0sWzAsMywiTSdcXG90aW1lcyBOIl0sWzEsMywiTVxcb3RpbWVzIE4iXSxbMiwzLCJNJydcXG90aW1lcyBOIl0sWzMsMywiMCJdLFsyLDAsIi4uLiJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs0LDVdLFs1LDZdLFs2LDddLFs3LDhdLFs4LDldLFsxMCwwXV0=
+\[\begin{tikzcd}
+	&& {...} \\
+	{\rm{Tor}^2(M',N)} & {\rm{Tor}^2(M,N)} & {\rm{Tor}^2(M'',N)} \\
+	{\rm{Tor}^1(M',N)} & {\rm{Tor}^1(M,N)} & {\rm{Tor}^1(M'',N)} \\
+	{M'\otimes N} & {M\otimes N} & {M''\otimes N} & 0
+	\arrow[from=1-3, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=3-1]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=4-1]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+\end{tikzcd}\]
+
+\end{atheorem}
+
+\begin{proof}
+    Take a free resolution of $N$
+    \[
+    F_3\to F_2\to F_1\to N \to 0
+    \]
+    We tensor this with the exact seqeunce \[
+    0\to M'\to M \to M'' \to 0
+    \]
+    and get the exact sequence of complexes% https://q.uiver.app/#q=WzAsMjEsWzEsMSwiRl8zXFxvdGltZXMgTSciXSxbMiwxLCJGXzNcXG90aW1lcyBNIl0sWzMsMSwiRl8zXFxvdGltZXMgTScnIl0sWzEsMiwiRl8yXFxvdGltZXMgTSciXSxbMiwyLCJGXzJcXG90aW1lcyBNIl0sWzMsMiwiRl8yXFxvdGltZXMgTScnIl0sWzEsMywiRl8xXFxvdGltZXMgTSciXSxbMiwzLCJGXzFcXG90aW1lcyBNIl0sWzMsMywiRl8xXFxvdGltZXMgTScnIl0sWzAsMSwiMCJdLFswLDIsIjAiXSxbMCwzLCIwIl0sWzQsMSwiMCJdLFs0LDIsIjAiXSxbNCwzLCIwIl0sWzEsNCwiMCJdLFsyLDQsIjAiXSxbMyw0LCIwIl0sWzEsMCwiLi4uIl0sWzIsMCwiLi4uIl0sWzMsMCwiLi4uIl0sWzksMF0sWzAsMV0sWzEsMl0sWzIsMTJdLFs1LDEzXSxbMyw0XSxbNCw1XSxbMTAsM10sWzAsM10sWzExLDZdLFsxLDRdLFs2LDddLFszLDZdLFs0LDddLFsyLDVdLFs1LDhdLFs2LDE1XSxbNywxNl0sWzgsMTddLFs3LDhdLFsxOSwxXSxbMTgsMF0sWzIwLDJdLFs4LDE0XSxbNSw0LCJsaWZ0IiwwLHsib2Zmc2V0IjotMywiY29sb3VyIjpbMzAwLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fSxbMzAwLDYwLDYwLDFdXSxbNCw3LCIiLDAseyJvZmZzZXQiOi0zLCJjb2xvdXIiOlszMDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNyw2LCIiLDAseyJvZmZzZXQiOi0zLCJjb2xvdXIiOlszMDAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+\[\begin{tikzcd}
+	& {...} & {...} & {...} \\
+	0 & {F_3\otimes M'} & {F_3\otimes M} & {F_3\otimes M''} & 0 \\
+	0 & {F_2\otimes M'} & {F_2\otimes M} & {F_2\otimes M''} & 0 \\
+	0 & {F_1\otimes M'} & {F_1\otimes M} & {F_1\otimes M''} & 0 \\
+	& 0 & 0 & 0
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=2-4, to=3-4]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-2, to=4-2]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-3, to=4-3]
+	\arrow[shift left=3, color={rgb,255:red,214;green,92;blue,214}, dotted, from=3-3, to=4-3]
+	\arrow["lift", shift left=3, color={rgb,255:red,214;green,92;blue,214}, dotted, from=3-4, to=3-3]
+	\arrow[from=3-4, to=3-5]
+	\arrow[from=3-4, to=4-4]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-2, to=5-2]
+	\arrow[shift left=3, color={rgb,255:red,214;green,92;blue,214}, dotted, from=4-3, to=4-2]
+	\arrow[from=4-3, to=4-4]
+	\arrow[from=4-3, to=5-3]
+	\arrow[from=4-4, to=4-5]
+	\arrow[from=4-4, to=5-4]
+\end{tikzcd}\]
+
+Where the homology of each complex is exactly the derived Tor functors. We take the long exact sequence of this short exact sequence and we are done.
+
+The boundary map from $\rm{Tor}^{i+1}(M'',N)\to \rm{Tor}^{i}(M',N)$ is defined through the pink arrows.
+\end{proof}
+
+
+\begin{remark}
+    I dont want to diagram chase. Just take homology functor for granted.
+
+    Let me know if you really want the proof in the notes and I'll write it up. There is a possibility it'll be in the hw anyway.
+\end{remark}
+
+\begin{remark}
+    The only part in the proof that requires special properties of tensoring is that the exactness at each level is kept (free modules are flat).
+\end{remark}
+%allen taught me well
+
+\begin{quotation}
+    Go to a quiet place. Put some music on, and go through the entire proof yourself. - Ananth Shankar, 2025
+\end{quotation}
+
+\corollary[]{
+    Fix $M$. If $\rm{Tor}^1(M,N)=0$ for all $N$, then $M$ is flat. 
+}
+\begin{proof}
+    Take any short exact sequence \[
+    0\to N' \to N \to N'' \to 0
+    \]
+    the long exact sequence here preserves \[
+    0\to M\otimes N'\ to M\otimes N \to M \otimes N'' \to 0
+    \]
+\end{proof}
