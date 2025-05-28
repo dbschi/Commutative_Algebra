@@ -1,0 +1,155 @@
+\section{Hom and Ext}
+%god its so fucking cold i need a coat
+    Let $M$ be an $R$-module. The functor $\rm{Hom}(M,-)$ is covariant and the functor $\rm{Hom}(-,M)$ is contravariant.
+
+Both are left exact (see Propositions \ref{prop:contraexact} and \ref{prop:coexact}).
+
+
+\begin{adefinition}{Injective modules}{}
+    $I$ is injective if there exists a dotted arrow for every solid diagram of the following.
+    % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBIl0sWzIsMSwiQiJdLFswLDEsIjAiXSxbMSwwLCJJIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiwwXSxbMCwzXSxbMSwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	& I \\
+	0 & A & B
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-2]
+	\arrow[hook, from=2-2, to=2-3]
+	\arrow[dashed, from=2-3, to=1-2]
+\end{tikzcd}\]
+
+\end{adefinition}
+\begin{remark}
+    Free modules need not be injective. 
+    There is an embedding of $\mathbb{Z}$ into $\mathbb{Q}$ but the identity map $\mathbb{Z}\to \mathbb{Z}$ does not lift to $\mathbb{Q}\to \mathbb{Z}$.
+
+    In general for an integral domain $R$, % https://q.uiver.app/#q=WzAsNCxbMCwxLCIwIl0sWzEsMSwiUiJdLFsyLDEsIlxccm17RnJhY30oUikiXSxbMSwwLCJJIl0sWzAsMV0sWzEsMiwiMVxcbWFwc3RvIHIiLDJdLFsxLDMsIjFcXG1hcHN0byBuIl0sWzIsMywiMVxcbWFwc3RvIG4nIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	& I \\
+	0 & R & {\rm{Frac}(R)}
+	\arrow[from=2-1, to=2-2]
+	\arrow["{1\mapsto n}", from=2-2, to=1-2]
+	\arrow["{1\mapsto r}"', from=2-2, to=2-3]
+	\arrow["{1\mapsto n'}"', dashed, from=2-3, to=1-2]
+\end{tikzcd}\]
+means that we need $n'\in I$ such that $rn'=n$.
+\end{remark}
+\begin{adefinition}{Divisible}{}
+    Let $R$ be an integral domain. $I$ is divisible if for every $n\in I$, $r\in R\backslash\{0\}$, there is $n'\in I$ s.t. $rn'=n$.
+\end{adefinition}\proposition[]{
+    Let $R$ be integral domain. Then injective modules are divisible.
+}
+\example[]{
+    As $\mathbb{Z}$ modules, $\mathbb{Z}^k, \mathbb{Z}/n$ modules are not divisble. 
+
+
+    $\mathbb{Q}^k, \mathbb{Q}/\mathbb{Z}$ are divisible. 
+}
+
+An injective resolution of $\mathbb{Z}/n$ is
+\[\begin{tikzcd}
+	0 & {\mathbb{Z}/n} & {\mathbb{Q}/\mathbb{Z}} & {\mathbb{Q}/\mathbb{Z}} & 0 \\
+	& {\frac{1}{n}\mathbb{Z}/\mathbb{Z}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\simeq"{description}, draw=none, from=1-2, to=2-2]
+	\arrow["n"', from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+\begin{adefinition}{Projective Module}{}
+    $P$ is projective if there is a dotted arrow for every solid diagram 
+    % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBIl0sWzIsMSwiQiJdLFswLDEsIjAiXSxbMSwwLCJQIl0sWzEsMCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMl0sWzMsMF0sWzMsMSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	& P \\
+	0 & A & B
+	\arrow[from=1-2, to=2-2]
+	\arrow[dashed, from=1-2, to=2-3]
+	\arrow[from=2-2, to=2-1]
+	\arrow[two heads, from=2-3, to=2-2]
+\end{tikzcd}\]
+\end{adefinition}
+
+\proposition[]{
+    $I$ is projective $\iff $ Hom $(I,-)$ is exact.
+
+    Similarly $P$ is injective $\iff$ Hom$(-,P)$ is exact
+}
+\begin{proof}
+    Both functors fail to be exact at the right side. But the last map of Hom's being surjective is equivalent to saying that the module is projective/injective.
+\end{proof}
+
+Ext measures the failure of Hom$(M,-)$ and Hom$(-,N)$ to be exact.
+\begin{adefinition}{Ext functor}{}
+    Let $M,N$ modules, use a free resolution of $M$ and apply with Hom$(-,N)$ functor.
+    % https://q.uiver.app/#q=WzAsNixbMSwwLCJQXzIiXSxbMiwwLCJQXzEiXSxbMywwLCJQXzAiXSxbMCwwLCIuLi4iXSxbNCwwLCJNIl0sWzUsMCwiMCJdLFswLDFdLFsxLDJdLFszLDBdLFsyLDRdLFs0LDVdXQ==
+% https://q.uiver.app/#q=WzAsMTIsWzEsMCwiUF8yIl0sWzIsMCwiUF8xIl0sWzMsMCwiUF8wIl0sWzAsMCwiLi4uIl0sWzQsMCwiTSJdLFs1LDAsIjAiXSxbMywxLCJcXHJte0hvbX0oUF8wLE4pIl0sWzIsMSwiXFxybXtIb219KFBfMSxOKSJdLFsxLDEsIlxccm17SG9tfShQXzIsTikiXSxbNCwxLCJcXHJte0hvbX0oTSxOKSJdLFs1LDEsIjAiXSxbMCwxLCIuLi4iXSxbMCwxXSxbMSwyXSxbMywwXSxbMiw0XSxbNCw1XSxbNiw3XSxbNyw4XSxbOSw2XSxbMTAsOV0sWzgsMTFdLFsxMywxNywiXFxybXtIb219KC0sTikiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	{...} & {P_2} & {P_1} & {P_0} & M & 0 \\
+	{...} & {\rm{Hom}(P_2,N)} & {\rm{Hom}(P_1,N)} & {\rm{Hom}(P_0,N)} & {\rm{Hom}(M,N)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=2-2, to=2-1]
+	\arrow[from=2-3, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, from=2-4, to=2-3]
+	\arrow[from=2-5, to=2-4]
+	\arrow[from=2-6, to=2-5]
+	\arrow["{\rm{Hom}(-,N)}", shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+We define \[
+\rm{Ext}^i(M,N)\defeq H_i
+\]
+the i-th degree (co)homology of this complex. 
+\end{adefinition}
+\begin{remark}
+    $\rm{Ext}^0(M,N)=\rm{Hom}(M,N)$ by exactness of the functor.
+
+    The result is also the same by taking an injective resolution of $N$  \[
+    0\to N \to I_0\to I_1 \to...
+    \]
+     and applying $\rm{Hom}(M,-)$.
+\end{remark}
+
+\begin{atheorem}{Baer's Criterion}{}
+    Let $I$ be an $R$-module.
+    The following are equivalent \begin{enumerate}
+        \item $I$ is an injective module.
+        \item For any ideal $a\subseteq R$, we have a lift % https://q.uiver.app/#q=WzAsNCxbMCwxLCIwIl0sWzEsMSwiYSJdLFsyLDEsIlIiXSxbMSwwLCJJIl0sWzAsMV0sWzEsMiwiXFxzdWJzZXRlcSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDNdXQ==
+\[\begin{tikzcd}
+	& I \\
+	0 & a & R
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=1-2]
+	\arrow["\subseteq"{description}, draw=none, from=2-2, to=2-3]
+	\arrow[dashed, from=2-3, to=1-2]
+\end{tikzcd}\]
+    \end{enumerate}
+\end{atheorem}
+
+\begin{proof}
+    $1\implies 2$.
+
+    We now show $2\implies 1$.
+    Suppose $I$ satisfies $2$. 
+    Let $A\stackon{$f$}{\to} I$, and $A$ injects into $B$.
+    Let $S=\{A',f': A\subseteq A'\subseteq B, f':A'\to I \textrm{ extends } f\}$, with partial order by inclusion. Every chain has an upper bound so we can apply zorn's lemma to find a maximal $A'\subseteq B $, $f':A'\to I$ that extends $A$. We want to show $A'=B$. Suppose not, then let $b\in B$ that is not in $A'$. 
+
+    Let $a=\{r\in R: rb\in A'\}$. 
+
+    We have a map $a\stackon{$g'$}{\to} I$ that sends $r\mapsto f'(rb)$. This is well defined because $rb\in A'$ and can be lifted (by hypothesis) to $R\to I$.
+
+    Define \[
+    h:A' + Rb \to I
+    \]
+    by $h(a_0 + rb) = f'(a_0)+g'(r)$.
+
+    We can check that this is well defined and extends $f'$, which is a contradiction. 
+\end{proof}
+
+\corollary[]{
+    Let $R$ be a principal ideal domain and $I$ be divisible. Then $I$ is injective.
+}
+\begin{proof}
+    All ideals are of the form $(r)$. This lifts by divisibility. Now apply Baer's Criterion.
+\end{proof}
